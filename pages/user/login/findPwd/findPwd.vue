@@ -21,7 +21,7 @@
 				mobile: '',
 				code: '',
 				codeText: '',
-				
+				user:{}
 				
 			}
 		},
@@ -34,14 +34,40 @@
 				this.$refs.validateFormRef.validate(valid=>{
 					if(valid){
 						uni.request({
-						url:'/api/user/update',
-						method:'POST',
-						data:this.user,
+						url:'/api/user/send/'+this.mobile,
+						method:'GET',
+						data:this.data,
 						timeout:5000,
 						success:function(res){
-							//更新成功跳转到个人信息页面
+							//验证码发送成功比对验证码是否正确
 							console.log("res:",res)
 							if(res.data.code==200){
+								uni.request({
+									url:'/api/user/password/'+this.user.phone+'/'+this.user.code,
+									method:'GET',
+									data:this.user,
+									timeout:5000,
+									success:function(res){
+										//验证码一致则收到user信息，调用更改密码接口
+										console.log("res:",res)
+										if(res.data.code==200){
+											uni.setStorageSync("find_user",res.data.data)
+											uni.navigateTo({
+												url:'/pages/user/login/findPwd/find_changePwd/find_changePwd'
+											})
+										}
+										else{
+											uni.showToast({
+												title: res.data.message,
+												icon: 'none',
+												duration: 2000
+											})  
+										}
+									},
+									fail:function(){
+										console.log("注册失败")
+									}
+								})
 								uni.showToast({
 									title: '修改成功',
 									icon: 'none',

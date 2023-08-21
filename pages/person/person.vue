@@ -47,8 +47,17 @@
 					    fontSize: 28,
 					}
 				],
-				imgArr:{},
+				imgArr:'',
 
+			}
+		},
+		onShow() {//在页面显示时调用这个周期函数
+		//1.从storage中回调用户数据
+			let user=uni.getStorageSync("user")
+			//2.判断用户信息是否不为空
+			if(user){
+				this.isLogin=true;
+				this.user=user;
 			}
 		},
 		methods: {

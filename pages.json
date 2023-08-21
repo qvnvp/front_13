@@ -102,23 +102,23 @@
 			"text": "首页"
 		}, {
 			"pagePath": "pages/college/college",
-			"iconPath": "static/tabbar_icon/ht.png",
-			"selectedIconPath": "static/tabbar_icon/ht1.png",
+			"iconPath": "static/tabbar_icon/college.png",
+			"selectedIconPath": "static/tabbar_icon/college1.png",
 			"text": "学院信息"
 		},{
 			"pagePath": "pages/services/services",
-			"iconPath": "static/tabbar_icon/cart.png",
-			"selectedIconPath": "static/tabbar_icon/cart1.png",
+			"iconPath": "static/tabbar_icon/services.png",
+			"selectedIconPath": "static/tabbar_icon/services1.png",
 			"text": "服务"
 		},{
 			"pagePath": "pages/test/test",
-			"iconPath": "static/tabbar_icon/cart.png",
-			"selectedIconPath": "static/tabbar_icon/cart1.png",
+			"iconPath": "static/tabbar_icon/toutiao.png",
+			"selectedIconPath": "static/tabbar_icon/toutiao1.png",
 			"text": "校园头条"
 		},{
 			"pagePath": "pages/person/person",
-			"iconPath": "static/tabbar_icon/profile.png",
-			"selectedIconPath": "static/tabbar_icon/profile1.png",
+			"iconPath": "static/tabbar_icon/person.png",
+			"selectedIconPath": "static/tabbar_icon/person1.png",
 			"text": "我的"
 		}]
 	}

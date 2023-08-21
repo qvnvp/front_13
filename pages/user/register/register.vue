@@ -1,9 +1,9 @@
 <template>
     <view style="padding: 15px;" >
         <u-form ref="validateFormRef" :model="d" :label-width="150" validate-trrigger="bind">
-            <u-form-item label="登录账号" prop="snumber" required >
+            <!-- <u-form-item label="登录账号" prop="snumber" required >
                 <u-input v-model="d.snumber" placeholder="请输入登录账号"/>
-            </u-form-item>
+            </u-form-item> -->
 			
             <u-form-item label="修改密码" prop="password" required>
                 <u-input type="password" v-model="d.password" placeholder="请修改登录密码"/>
@@ -23,9 +23,27 @@
 </template>
 
 <script>
-
     export default {
         data() {
+			var validatePass = (rule, value, callback) => {
+			        if (value === '') {
+			                callback(new Error('请输入密码'));
+			        } else {
+			          if (this.d.confirmPassword !== '') {
+			              this.$refs.d.validateField('confirmPwd');
+			          }
+			          callback();
+			        }
+			      };
+			var validatePass2 = (rule, value, callback) => {
+			          if (value === '') {
+			              callback(new Error('请再次输入密码'));
+			          } else if (value !== this.d.password) {
+			              callback(new Error('两次输入密码不一致!'));
+			          } else {
+			              callback();
+			          }
+			      };
             return {
 				mobile: '',
 				code: '',
@@ -37,29 +55,18 @@
 				    password: [
 				        {required: true, message: '请输入密码!', trigger: 'blur'},
 				        //pattern 规则
-						{pattern: /^(?=.*\S).+$/, message: '请输入密码!', trigger: 'blur'}
+						{pattern: /^(?=.*\S).+$/, message: '请先输入密码!', trigger: 'blur'},
+						{ validator: validatePass, trigger: 'blur' }
 				    ],
-				  //   confirmPassword: [
-				  //       {required: true, message: '请确认密码!', trigger: 'blur'},
-				  //       //pattern 规则
-						// {pattern: /^(?=.*\S).+$/, message: '请确认密码!', trigger: 'blur'}
-				  //   ],
+				    confirmPassword: [
+				        {required: true, message: '请确认密码!', trigger: 'blur'},
+				        //pattern 规则
+						{pattern: /^(?=.*\S).+$/, message: '请再次确认密码!', trigger: 'blur'},
+						{validator: validatePass2, trigger: 'blur', required: true }
+				    ],
+				  
 				},
-				confirm_password: {
-					rules: [{
-							required: true,
-							errorMessage: '请再次输入新密码',
-						},
-						{
-							validateFunction: function(rule, value, data, callback) {
-								if (value != this.d.password) {
-									callback('两次输入的密码必须相同')
-								}
-								return true
-							}
-						}
-					]
-				},
+				
 				d:{
 					code:'',
 					password:'',
@@ -92,9 +99,9 @@
 									url:'/pages/user/details/details'
 								})
 							}
-							if(res.data.code=='000'){
+							else{
 								uni.showToast({
-									title: '输入密码不一致',
+									title: res.data.message,
 									icon: 'none',
 									duration: 2000
 								})  
