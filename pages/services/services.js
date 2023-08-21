@@ -58,35 +58,37 @@ import app from "../../App.vue"
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_4_4_click:function(event){
+			// services_4_4_click:function(event){
 			
-			},
+			// },
 			
 			/**
 			* services_6_6处理函数
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_6_6_click:function(event){
+			// services_6_6_click:function(event){
 			
-			},
+			// },
 			
 			/**
 			* services_29_29处理函数
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_29_29_click:function(event){
+			// services_29_29_click:function(event){
 			
-			},
+			// },
 			
 			/**
 			* services_32_32处理函数
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_32_32_click:function(event){
-			
+			services_32_32_click:function(){
+			    uni.navigateTo({
+			    	url:"/pages/bus_time/bus_time"
+			    })
 			},
 			
 			/**
@@ -94,36 +96,36 @@ import app from "../../App.vue"
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_35_35_click:function(event){
+			// services_35_35_click:function(event){
 			
-			},
+			// },
 			
 			/**
 			* services_38_38处理函数
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_38_38_click:function(event){
+			// services_38_38_click:function(event){
 			
-			},
+			// },
 			
 			/**
 			* services_41_41处理函数
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_41_41_click:function(event){
+			// services_41_41_click:function(event){
 			
-			},
+			// },
 			
 			/**
 			* services_44_44处理函数
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_44_44_click:function(event){
+			// services_44_44_click:function(event){
 			
-			},
+			// },
 			
 			/**
 			* services_48_48处理函数
@@ -131,7 +133,9 @@ import app from "../../App.vue"
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
 			services_48_48_click:function(event){
-			
+			uni.navigateTo({
+			       url:"/pages/xiaoli/xiaoli"
+			})
 			},
 			
 			/**
@@ -139,26 +143,28 @@ import app from "../../App.vue"
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_51_51_click:function(event){
+			// services_51_51_click:function(event){
 			
-			},
+			// },
 			
 			/**
 			* services_54_54处理函数
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_54_54_click:function(event){
+			// services_54_54_click:function(event){
 			
-			},
+			// },
 			
 			/**
 			* services_58_58处理函数
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			services_58_58_click:function(event){
-			
+			services_58_58_click:function(){
+			   uni.navigateTo({
+			        url:"/pages/baoxiu/baoxiu"
+			 })
 			},
 			
 			/**
@@ -167,7 +173,9 @@ import app from "../../App.vue"
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
 			services_59_59_click:function(event){
-			
+			      uni.navigateTo({
+				  url:"/pages/baoxiu/baoxiu"
+			       })
 			},
 			
 			

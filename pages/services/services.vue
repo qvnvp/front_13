@@ -1,15 +1,5 @@
-﻿<!--本页面由uniapp切片工具生成，uni-app切片-可视化设计工具(一套代码编译到7个平台iOS、Android、H5、小程序)，软件下载地址：http://www.ymznkf.com/new_view_669.htm -->
-<template>
+﻿<template>
 	<view class="YmContent">
-			<!-- <view class="services_1"> -->
-				<!-- <view class="services_2">
-				</view>
-				<view class="services_3">
-					<image v-on:click="services_4_4_click()"  src="/static/services/images/services_4_4.jpg" mode="scaleToFill" border="0"    class="services_4"></image>
-					<text decode="true" class="services_5">欢迎来到应用中心！</text>
-					<image v-on:click="services_6_6_click()"  src="/static/services/images/services_6_6.jpg" mode="scaleToFill" border="0"    class="services_6"></image>
-				</view>
-			</view> -->
 			<view class="services_7">
 				<view class="services_8">
 					<view class="services_9">
@@ -20,7 +10,7 @@
 					<view class="services_26">
 						<view class="services_28">
 							<image v-on:click="services_29_29_click()"  src="/static/services/images/services_29_29.jpg" mode="scaleToFill" border="0"    class="services_29"></image>
-							<text decode="true" class="services_30"> 身份认证 </text>
+							<text decode="true" class="services_30">身份认证</text>
 						</view>
 						<view class="services_31">
 							<image v-on:click="services_32_32_click()"  src="/static/services/images//bus.png" mode="scaleToFill" border="0"    class="services_32"></image>
@@ -93,5 +83,5 @@ export default services;
 </script>
 
 <style lang="scss" scoped>
-   @import './services.scss'
+   @import './services.scss'   
 </style>
