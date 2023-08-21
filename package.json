@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "fuse.js": "^6.6.2",
+    "pinyin": "^3.0.0-alpha.5",
+    "vue-select": "^3.20.2"
+  }
+}
