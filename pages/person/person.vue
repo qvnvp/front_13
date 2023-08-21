@@ -3,18 +3,19 @@
 		<!--登录之后显示的内容-->
 		<view v-if="isLogin">
 			<view class="u-flex-col u-p-30 u-col-center">
-				<u-image width='150rpx' height='150rpx' :src='imgArr[0]' shape="circle"></u-image>
+				<u-image width='150rpx' height='150rpx' :src='this.user.avatar[0]' shape="circle"></u-image>
 				<u-button size="mini" style="margin-top: 10rpx;" @click="chooseAvaters=true">编辑头像</u-button>
 				<!-- 头像弹窗 -->
 				<u-action-sheet :list="lists" v-model="chooseAvaters" @click="editAvater"></u-action-sheet>
 			</view>
 			<u-cell-group>
-				<u-cell-item title="用户名" value="184177677" :arrow="false"></u-cell-item>
-				<u-cell-item title="昵称" value="新生" :arrow="false"></u-cell-item>
-				<u-cell-item title="学院" value="计算机学院" :arrow="false"></u-cell-item>
+				<u-cell-item title="用户id" :value="user.id" :arrow="false"></u-cell-item>
+				<u-cell-item title="昵称" :value="user.name" :arrow="false"></u-cell-item>
+				<u-cell-item title="学院" :value="user.college" :arrow="false"></u-cell-item>
 				<u-cell-item title="修改个人信息" @click="changeDetails()"></u-cell-item>
 				<u-cell-item title="修改密码" @click="changePwd()"></u-cell-item>
 			</u-cell-group>
+			<u-button class="button" shape="square" type="error" @click="exit()">退出登录</u-button>
 		</view>
 		<!--登录之前显示的内容-->
 		<view v-else>
@@ -47,7 +48,11 @@
 					    fontSize: 28,
 					}
 				],
-				imgArr:'',
+				user:{
+					avatar:'',//头像
+					name:'',
+					snumber:''
+				}
 
 			}
 		},
@@ -78,6 +83,15 @@
 					url:'/pages/user/login/login'
 				})
 			},
+			//退出登录的函数
+			exit:function(){
+				//清空storage中的用户数据
+				uni.clearStorageSync("user")
+				//刷新当前页面
+				uni.reLaunch({
+					url:'/pages/profile/profile'
+				})
+			},
 			changeDetails:function(){
 				uni.navigateTo({
 					url:'/pages/user/details/details'
@@ -102,13 +116,13 @@
 				uni.chooseImage({
 				    count:1,//限制图片上传数量，封顶9张
 				    success:(res)=>{//拿到图片的返回数据
-				    this.imgArr = res.tempFilePaths
+				    this.user.avatar = res.tempFilePaths
 				    }
 				})
 			},
 			previewImage(){
 				uni.previewImage({
-					urls: [this.imgArr[0]],//拿头像地址
+					urls: [this.user.avatar[0]],//拿头像地址
 				})
 			},
 
