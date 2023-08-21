@@ -2,7 +2,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://gwy3zr.natappfree.cc/',
+                target: 'http://uapt3z.natappfree.cc/doc.html',
                 changOrigin: true,
                 onProxyReq(proxyReq, req, res) {
                     // 在请求头中添加 token
