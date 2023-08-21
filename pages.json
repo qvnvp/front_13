@@ -103,6 +103,15 @@
 				"enablePullDownRefresh": false
 				}
 		}
+        ,{
+            "path" : "pages/dev/dev",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
