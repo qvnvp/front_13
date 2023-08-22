@@ -75,6 +75,7 @@
 								//3.如果登录成功，将用户的数据存储在storage中，以便验证
 								if(res.data.code==200){
 									uni.setStorageSync("user",res.data.data)
+									// localStorage.setItem('user',res.data.data)
 									//4.返回个人中心页面
 									uni.reLaunch({
 										url:'/pages/person/person'

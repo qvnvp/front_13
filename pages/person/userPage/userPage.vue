@@ -6,7 +6,7 @@
 			<image class="header-img" src="/static/img/header/c.svg" mode="aspectFit"></image>
 			<view class="pl-30 flex-1" >
 				<view class="flex items-center mb-20">
-					<view class="flex-1 flex flex-row items-center justify-center">
+					<view class="flex-1 flex flex-row items-center ">
 						<text class="font-bold text-32">昵称：</text>
 						<text class="text-26">用户名</text>
 					</view>
@@ -14,7 +14,12 @@
 						<text class="font-bold text-32">学院：</text>
 						<text class="text-26">本科生院</text>
 					</view>
-					
+				</view>
+				<view class="flex ">
+					<view class="flex-1 flex flex-row items-center ">
+						<text class="font-bold text-32">兴趣爱好：</text>
+						<text class="text-26">旅游 摄影</text>
+					</view>
 				</view>
 				<!-- <view class="">
 					<u-button :customStyle="btnStyle" :ripple="true">关注
@@ -76,6 +81,18 @@
 		data() {
 			return {
 				showPopup: false,
+				author_article_list:[],
+				author_article:{
+					authorAvatar:'',
+					authorName:'',
+					collection:'',
+					comment:'',
+					content:'',
+					images:'',
+					likes:'',
+					title:'',
+					views:'',
+				},
 				// 按钮配置
 				btnStyle: {
 					width: "120rpx",

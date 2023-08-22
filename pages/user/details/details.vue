@@ -10,7 +10,7 @@
 			    <u-input v-model="user.nickname" placeholder="请输入昵称"/>
 			</u-form-item>
 			<u-form-item label="学院" prop="college" >
-			    <u-input v-model="user.college" placeholder="请输入登录姓名"/>
+			    <u-input v-model="user.college" placeholder="请输入所在学院"/>
 			</u-form-item>
 			
             <u-form-item label="用户类型">
@@ -21,7 +21,7 @@
             	</u-radio-group>
             </u-form-item>
 			<u-form-item label="兴趣爱好">
-				<u-checkbox-group>
+				<u-checkbox-group  @change="checkboxChange">
 					<u-checkbox v-model="item.checked" v-for="(item, index) in checkboxList" :key="index" :name="item.name">
 						{{ item.name }}
 					</u-checkbox>
@@ -53,27 +53,27 @@
 				],
 				checkboxList: [
 					{
-						name: '乐器类',
+						name: '音乐',
 						checked: false,
 						disabled: false
 					},
 					{
-						name: '歌舞类',
+						name: '阅读',
 						checked: false,
 						disabled: false
 					},
 					{
-						name: '摄影类',
+						name: '摄影',
 						checked: false,
 						disabled: false
 					},
 					{
-						name: '相声小品类',
+						name: '旅游',
 						checked: false,
 						disabled: false
 					},
 					{
-						name: '室外活动类',
+						name: '运动',
 						checked: false,
 						disabled: false
 					},
@@ -90,8 +90,8 @@
 					age:'',
 					password:'',
 					confirmPassword:'',
-					habbit:'',
 					type:0,
+					hobbies:''
 				},
 				
             };
@@ -114,11 +114,13 @@
 			},
 			//更新个人信息的方法
 			submit:function(){
+				this.user.hobbies = this.user.hobbies.join(',')
 				this.$refs.validateFormRef.validate(valid=>{
 					if(valid){
+						console.log(this.user.hobbies)
 						uni.request({
-						url:'/api/user/update',
-						method:'POST',
+						url:'/api/user',
+						method:'PUT',
 						data:this.user,
 						timeout:5000,
 						success:function(res){
@@ -151,6 +153,21 @@
 					}
 				})
 				
+			},checkboxChange: function (e) {
+				console.log(e)
+				this.user.hobbies=e
+				// var items = this.checkboxList,
+				// 	values = e.detail.value;
+				// for (var i = 0, lenI = items.length; i < lenI; ++i) {
+				// 	const item = items[i]
+				// 	if(values.includes(item.value)){
+				// 		this.$set(item,'checked',true)
+				// 		this.user.hobbies.push(item)
+				// 		console.log("hobbies:",this.user.hobbies)
+				// 	}else{
+				// 		this.$set(item,'checked',false)
+				// 	}
+				// }
 			},
 			radioChange(e){
 				if(e=="管理员"){
