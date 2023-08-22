@@ -167,7 +167,7 @@ import app from "../../App.vue"
 			*/
 			services_58_58_click:function(){
 			   uni.navigateTo({
-			        url:"/pages/baoxiu/baoxiu"
+			        url:"/pages/services/baoxiu/baoxiu"
 			 })
 			},
 			
@@ -178,7 +178,7 @@ import app from "../../App.vue"
 			*/
 			services_59_59_click:function(event){
 			      uni.navigateTo({
-				  url:"/pages/baoxiu/baoxiu"
+				  url:"/pages/services/baoxiu/baoxiu"
 			       })
 			},
 			

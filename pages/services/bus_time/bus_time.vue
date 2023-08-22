@@ -11,7 +11,7 @@
     </view>
     <!-- 图片展示区域 -->
     <view class="image-container">
-      <image v-if="showImage" :src="currentImage"></image>
+       <image v-if="showImage" :src="currentImage"></image>
     </view>
   </view>
 </template>
@@ -20,8 +20,8 @@
 export default {
   data() {
     return {
-      showImage: false,
-      currentImage: ''
+      showImage: true,
+      currentImage: '/static/services/images/bus_time1.jpg'
     };
   },
   methods: {
@@ -40,7 +40,7 @@ export default {
 <style>
 /* Add any custom styles here */
 .wrap {
-  padding: 20px;
+  padding: 25px;
 }
 
 .top-buttons {
@@ -75,8 +75,9 @@ export default {
 }
 
 .image-container img {
-  width: 100%;
- max-height: 80vh; /* 调整图片高度，不要超过屏幕高度的80% */
+margin-top: 20px;
+  width: 150%;
+  height: 1000rpx; 
   object-fit: contain; /* 使用 contain 保持完整图片显示，可能会留有空白 */
 }
 
