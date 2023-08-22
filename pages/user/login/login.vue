@@ -69,7 +69,7 @@
 							url:'/api/user/login',///根据后端更改地址
 							data:this.user,
 							method:'POST',
-							timeout:5000,
+							//timeout:8000,
 							success:(res)=>{//请求成功之后执行的回调函数
 								console.log("res:",res);
 								//3.如果登录成功，将用户的数据存储在storage中，以便验证

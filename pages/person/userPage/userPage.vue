@@ -3,22 +3,18 @@
 	<view class="user-space wrap-card">
 		<!-- 头像栏 -->
 		<view class="header flex items-center border-b pb-20" >
-			<image class="header-img" src="/static/img/header/c.svg" mode="aspectFit"></image>
+			<image class="header-img" :src="user.avatar" mode="aspectFit"></image>
 			<view class="pl-30 flex-1" >
 				<view class="flex items-center mb-20">
 					<view class="flex-1 flex flex-row items-center ">
 						<text class="font-bold text-32">昵称：</text>
-						<text class="text-26">用户名</text>
-					</view>
-					<view class="flex-1 flex flex-row items-center justify-center">
-						<text class="font-bold text-32">学院：</text>
-						<text class="text-26">本科生院</text>
+						<text class="text-26">{{user.name}}</text>
 					</view>
 				</view>
 				<view class="flex ">
 					<view class="flex-1 flex flex-row items-center ">
 						<text class="font-bold text-32">兴趣爱好：</text>
-						<text class="text-26">旅游 摄影</text>
+						<text class="text-26">{{user.hobbies}}</text>
 					</view>
 				</view>
 				<!-- <view class="">
@@ -44,14 +40,16 @@
 		</u-sticky>
 		<!-- 列表内容 -->
 		<template v-if="tabIndex === 0">
-			<view class="p-30 border-b">
-				
-			</view>
+			<!-- 帖子列表 -->
+			<info-list :item="item" v-for="(item,index) in list" :key="item.id" :index="index" 
+				>
+			</info-list>
+			<u-loadmore :status="loadStatus"></u-loadmore>
 		</template>
 		<template v-else>
-			<!-- 资讯列表 -->
-			<info-list :item="item" v-for="(item,index) in list" :key="item.username" :index="index" @mark="handleMark"
-				@follow="handleFollow">
+			<!-- 动态列表 -->
+			<info-list :item="item" v-for="(item,index) in list" :key="item.id" :index="index" 
+				>
 			</info-list>
 			<u-loadmore :status="loadStatus"></u-loadmore>
 		</template>
@@ -70,9 +68,10 @@
 </template>
 
 <script>
-	import {
-		newsList
-	} from "@/utils/data/data.js"
+	import axios from "@/js/axios.min.js"
+	// import {
+	// 	newsList
+	// } from "@/utils/data/data1.js"
 	import InfoList from "@/pages/person/userPage/info-list.vue"
 	export default {
 		components: {
@@ -81,8 +80,8 @@
 		data() {
 			return {
 				showPopup: false,
-				author_article_list:[],
-				author_article:{
+				newsList:[[],[]],
+				author:{
 					authorAvatar:'',
 					authorName:'',
 					collection:'',
@@ -92,6 +91,8 @@
 					likes:'',
 					title:'',
 					views:'',
+				},
+				user:{
 				},
 				// 按钮配置
 				btnStyle: {
@@ -105,25 +106,62 @@
 				// 导航标签
 				tabIndex: 0,
 				tabList: [
-					// {
-					// 	name: "主页",
-					// },
+					
 					{
 						name: "帖子",
-						list: newsList[0].list,
+						//list: newsList[0].list,
 						loadStatus: 'loadmore'
 					},
 					{
 						name: "动态",
-						list: newsList[1].list,
+						//list: newsList[1].list,
 						loadStatus: 'loadmore'
 					}
 				],
 			}
 		},
+		mounted() {
+			// uni.request({
+			// 	url:'/api/article/own'
+			// })
+		//发送 AJAX 请求获取文章信息列表
+			axios.get('/api/article/own').then(response => {
+				this.newsList[0]= response.data.data; // 将返回的数据保存到组件的数据属性中
+				console.log("newslist[0]:",this.newsList[0])
+			}).catch(error => {
+				console.error(error);
+			});
+			axios.get('/api/behavior/collection').then(response => {
+				this.newsList[1]= response.data.data; // 将返回的数据保存到组件的数据属性中
+				console.log("newslist[1]:",this.newsList[1])
+			}).catch(error => {
+				console.error(error);
+			});
+		},
+		onLoad() {
+			this.$u.get('/api/user').then(res=>{
+				console.log(res)
+				this.user=res.data
+			}).catch(err=>{
+				console.log(err)
+			})
+			/* uni.request({
+				url:'/api/user',
+				method:'GET',
+				timeout:5000,
+				success: function(res) {
+					console.log(res)
+					this.user=res.data.data
+					console.log("jjjjj:",this.user)
+				},
+				fail: function(err){
+					console.log(err)
+				}
+			}) */
+		},
 		computed: {
 			list() {
-				return this.tabList[this.tabIndex].list
+				return this.newsList[this.tabIndex]
 			},
 			loadStatus() {
 				return this.tabList[this.tabIndex].loadStatus
@@ -154,28 +192,28 @@
 				})
 			},
 			// 表情
-			handleMark(item) {
-				let infoNum = this.tabList[this.tabIndex].list[item.index].infoNum
-				switch (item.value) {
-					case 'smile':
-						if (infoNum.index == 1) return // 微笑
-						else if (infoNum.index == 2) infoNum.cryNum--
-						infoNum.index = 1
-						infoNum.smileNum++
-						break;
-					case 'cry':
-						if (infoNum.index == 2) return // 踩
-						else if (infoNum.index == 1) infoNum.smileNum--
-						infoNum.index = 2
-						infoNum.cryNum++
-						break
-				}
-				const title = item.value === 'smile' ? '谢谢表扬' : '继续加油'
-				uni.showToast({
-					title,
-					icon: 'none',
-				})
-			},
+			// handleMark(item) {
+			// 	let infoNum = this.tabList[this.tabIndex].list[item.index].infoNum
+			// 	switch (item.value) {
+			// 		case 'smile':
+			// 			if (infoNum.index == 1) return // 微笑
+			// 			else if (infoNum.index == 2) infoNum.cryNum--
+			// 			infoNum.index = 1
+			// 			infoNum.smileNum++
+			// 			break;
+			// 		case 'cry':
+			// 			if (infoNum.index == 2) return // 踩
+			// 			else if (infoNum.index == 1) infoNum.smileNum--
+			// 			infoNum.index = 2
+			// 			infoNum.cryNum++
+			// 			break
+			// 	}
+			// 	const title = item.value === 'smile' ? '谢谢表扬' : '继续加油'
+			// 	uni.showToast({
+			// 		title,
+			// 		icon: 'none',
+			// 	})
+			// },
 		}
 	}
 </script>

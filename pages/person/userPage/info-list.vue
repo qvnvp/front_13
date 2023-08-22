@@ -5,7 +5,7 @@
 		<view class="flex flex-row justify-between items-center">
 			<!-- 头像 -->
 			<view class="flex flex-row justify-center items-center">
-				<image class="img-header mr-10" :src="info.userPic" mode="widthFix" lazy-load
+				<image class="img-header mr-10" :src="info.authorAvatar" mode="widthFix" lazy-load
 					@click.stop="$u.route('/pages/mine/user-space')"></image>
 				<view class="flex justify-center items-center text-gray-500 text-30">{{item.username}}
 					<view class="iconfont iconxingbie-nan tag-age"
@@ -34,19 +34,19 @@
 		<slot>
 			<view class="relative flex flex-row justify-center items-center">
 				<!-- 图片 -->
-				<image class="w-full rounded-20" :src="info.coverPic" mode="widthFix" lazy-load @click="goDetail()">
+				<image class="w-full rounded-20" :src="info.images" mode="widthFix" lazy-load @click="goDetail()">
 				</image>
 				<template v-if="info.type === 'video'">
 					<!-- 视频 -->
-					<view class="icon-play iconfont iconbofang"></view>
+					<!-- <view class="icon-play iconfont iconbofang"></view>
 					<view class="play-info">
 						{{info.playNum}}次播放 {{info.playLong}}
-					</view>
+					</view> -->
 				</template>
 			</view>
 		</slot>
 		<!-- 点赞、评论 -->
-		<view class="flex flex-row justify-between items-center text-gray-500 my-10">
+		<!-- <view class="flex flex-row justify-between items-center text-gray-500 my-10">
 			<view class="flex flex-row justify-center items-center">
 				<view class="flex flex-row justify-center items-center mr-20" @click.stop="handleMark('smile')">
 					<view class="iconfont mr-10 text-36" :class="[handleIcon('smile',info.infoNum)]"></view>
@@ -67,7 +67,7 @@
 					{{info.shareNum}}
 				</view>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -114,30 +114,30 @@
 				})
 			},
 			// 表情处理
-			handleIcon(type, item = null) {
-				if (!item) return
-				let index = item.index
-				if (type === 'smile') {
-					if (index === 1) {
-						return 'active,icondianzan'
-					} else {
-						return 'iconthumbsup'
-					}
-				} else {
-					if (index === 2) {
-						return 'active,iconz-nolikeFill'
-					} else {
-						return 'iconz-nolike'
-					}
-				}
-			},
+			// handleIcon(type, item = null) {
+			// 	if (!item) return
+			// 	let index = item.index
+			// 	if (type === 'smile') {
+			// 		if (index === 1) {
+			// 			return 'active,icondianzan'
+			// 		} else {
+			// 			return 'iconthumbsup'
+			// 		}
+			// 	} else {
+			// 		if (index === 2) {
+			// 			return 'active,iconz-nolikeFill'
+			// 		} else {
+			// 			return 'iconz-nolike'
+			// 		}
+			// 	}
+			// },
 			// 操作表情
-			handleMark(value) {
-				this.$emit('mark', {
-					value,
-					index: this.index
-				})
-			},
+			// handleMark(value) {
+			// 	this.$emit('mark', {
+			// 		value,
+			// 		index: this.index
+			// 	})
+			// },
 			// 评论
 			handleComment() {
 				if (!this.isDetail) return this.goDetail()
