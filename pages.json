@@ -113,7 +113,7 @@
 		 {
 			"path": "pages/services/wenjuan/wenjuan",
 			"style": {
-				"navigationBarTitleText": "问卷调查",
+				"navigationBarTitleText": "调查问卷",
 				"enablePullDownRefresh": false
 				}
 		}
