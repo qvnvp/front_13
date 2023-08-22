@@ -13,7 +13,9 @@
  */
 @import 'uview-ui/theme.scss';
 /* 颜色变量 */
-
+$uni-color-green: #01906c;// 主题色
+$uni-color-pink: #ec4899; // 粉色 
+$uni-color-blue: #3B82F6; // 蓝色
 /* 行为相关颜色 */
 $uni-color-primary: #007aff;
 $uni-color-success: #4cd964;
@@ -23,7 +25,7 @@ $uni-color-error: #dd524d;
 /* 文字基本颜色 */
 $uni-text-color:#333;//基本色
 $uni-text-color-inverse:#fff;//反色
-$uni-text-color-grey:#999;//辅助灰色，如加载更多的提示信息
+$uni-text-color-gray:#999;//辅助灰色，如加载更多的提示信息
 $uni-text-color-placeholder: #808080;
 $uni-text-color-disable:#c0c0c0;
 
@@ -35,7 +37,8 @@ $uni-bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色
 
 /* 边框颜色 */
 $uni-border-color:#c8c7cc;
-
+$uni-border-color1:#c8c7cc;
+$uni-border-color2:#F3F4F6;
 /* 尺寸变量 */
 
 /* 文字尺寸 */

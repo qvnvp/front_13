@@ -12,8 +12,10 @@
 				<u-cell-item title="用户id" :value="user.id" :arrow="false"></u-cell-item>
 				<u-cell-item title="昵称" :value="user.name" :arrow="false"></u-cell-item>
 				<u-cell-item title="学院" :value="user.college" :arrow="false"></u-cell-item>
+				<u-cell-item title="个人主页" @click="userPage()"></u-cell-item>
 				<u-cell-item title="修改个人信息" @click="changeDetails()"></u-cell-item>
 				<u-cell-item title="修改密码" @click="changePwd()"></u-cell-item>
+				
 			</u-cell-group>
 			<u-button class="button" shape="square" type="error" @click="exit()">退出登录</u-button>
 		</view>
@@ -52,7 +54,8 @@
 					avatar:'',//头像
 					name:'',
 					snumber:''
-				}
+				},
+				
 
 			}
 		},
@@ -92,6 +95,11 @@
 					url:'/pages/profile/profile'
 				})
 			},
+			userPage:function(){
+				uni.navigateTo({
+					url:'/pages/person/userPage/userPage'
+				})
+			},
 			changeDetails:function(){
 				uni.navigateTo({
 					url:'/pages/user/details/details'
@@ -125,6 +133,9 @@
 					urls: [this.user.avatar[0]],//拿头像地址
 				})
 			},
+			goPage(url) {
+				if (url) this.$u.route('/pages/person/' + url)
+			}
 
 		}
 	}

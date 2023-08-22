@@ -103,6 +103,15 @@
 				"enablePullDownRefresh": false
 				}
 		}
+        ,{
+            "path" : "pages/person/userPage/userPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人主页",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
