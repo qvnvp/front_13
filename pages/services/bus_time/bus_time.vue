@@ -47,26 +47,36 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 20px; /* 调整间距 */
+  margin-bottom: 35px; /* 调整间距 */
 }
 
 .ellipse-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 35px;
-  background-color: #7da6ff;
+  width: 120px;
+  height: 40px;
+  /* background-color: #425887; */
   border-radius: 70%;
 }
 
 .custom-button {
   /* 按钮的自定义样式 */
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px; /* 调整按钮的宽度 */
+    height: 25px; /* 调整按钮的高度 */
+    border-radius: 5px; /* 使用5px的圆角 */
+    cursor: pointer;
+    color: skyblue;
+    font-size: 14px; /* 调整字体大小 */
+    border: none;
 }
 
 .image-container img {
   width: 100%;
-  max-height: 80vh; /* 调整图片高度，不要超过屏幕高度的80% */
+ max-height: 80vh; /* 调整图片高度，不要超过屏幕高度的80% */
   object-fit: contain; /* 使用 contain 保持完整图片显示，可能会留有空白 */
 }
 

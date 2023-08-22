@@ -83,23 +83,37 @@
 					}
 				},
 		 {
-			"path": "pages/bus_time/bus_time",
+			"path": "pages/services/bus_time/bus_time",
 			"style": {
-				"navigationBarTitleText": "校车时刻表",
+				"navigationBarTitleText": "校车时刻",
 				"enablePullDownRefresh": false
 				}
 		},
 		 {
-			"path": "pages/baoxiu/baoxiu",
+			"path": "pages/services/baoxiu/baoxiu",
 			"style": {
 				"navigationBarTitleText": "报修服务",
 				"enablePullDownRefresh": false
 				}
 		},
 		 {
-			"path": "pages/xiaoli/xiaoli",
+			"path": "pages/services/xiaoli/xiaoli",
 			"style": {
 				"navigationBarTitleText": "校历",
+				"enablePullDownRefresh": false
+				}
+		},
+		 {
+			"path": "pages/services/activities/activities",
+			"style": {
+				"navigationBarTitleText": "社团活动",
+				"enablePullDownRefresh": false
+				}
+		},
+		 {
+			"path": "pages/services/wenjuan/wenjuan",
+			"style": {
+				"navigationBarTitleText": "问卷调查",
 				"enablePullDownRefresh": false
 				}
 		}

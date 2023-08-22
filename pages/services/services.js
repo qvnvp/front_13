@@ -87,7 +87,7 @@ import app from "../../App.vue"
 			*/
 			services_32_32_click:function(){
 			    uni.navigateTo({
-			    	url:"/pages/bus_time/bus_time"
+			    	url:"/pages/services/bus_time/bus_time"
 			    })
 			},
 			
@@ -114,18 +114,22 @@ import app from "../../App.vue"
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			// services_41_41_click:function(event){
-			
-			// },
+			services_41_41_click:function(event){
+			uni.navigateTo({
+				url:"/pages/services/wenjuan/wenjuan"
+			})
+			},
 			
 			/**
 			* services_44_44处理函数
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			// services_44_44_click:function(event){
-			
-			// },
+			services_44_44_click:function(event){
+			uni.navigateTo({
+				url:"/pages/services/activities/activities"
+			})
+			},
 			
 			/**
 			* services_48_48处理函数
@@ -134,7 +138,7 @@ import app from "../../App.vue"
 			*/
 			services_48_48_click:function(event){
 			uni.navigateTo({
-			       url:"/pages/xiaoli/xiaoli"
+			       url:"/pages/services/xiaoli/xiaoli"
 			})
 			},
 			

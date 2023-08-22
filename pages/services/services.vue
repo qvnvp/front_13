@@ -32,7 +32,7 @@
 						</view>
 						<view class="services_43">
 							<image v-on:click="services_44_44_click()"  src="/static/services/images/active.png" mode="scaleToFill" border="0"    class="services_44"></image>
-							<text decode="true" class="services_45">校园活动</text>
+							<text decode="true" class="services_45">社团活动</text>
 						</view>
 					</view>
 				</view>
