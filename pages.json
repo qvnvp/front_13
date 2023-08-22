@@ -103,7 +103,15 @@
 				"enablePullDownRefresh": false
 				}
 		}
-        ,{
+		,{
+            "path" : "pages/dev/dev",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "校园资讯",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
             "path" : "pages/person/userPage/userPage",
             "style" :                                                                                    
             {
@@ -111,8 +119,7 @@
                 "enablePullDownRefresh": false
             }
             
-        }
-    ],
+        }    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -141,10 +148,10 @@
 			"selectedIconPath": "static/tabbar_icon/services1.png",
 			"text": "服务"
 		},{
-			"pagePath": "pages/test/test",
+			"pagePath": "pages/dev/dev",
 			"iconPath": "static/tabbar_icon/toutiao.png",
 			"selectedIconPath": "static/tabbar_icon/toutiao1.png",
-			"text": "校园头条"
+			"text": "校园资讯"
 		},{
 			"pagePath": "pages/person/person",
 			"iconPath": "static/tabbar_icon/person.png",

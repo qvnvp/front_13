@@ -3,10 +3,10 @@
     <!-- 顶部容器 -->
     <view class="top-buttons">
       <view class="ellipse-container">
-        <u-button class="custom-button" @click="transfer1">我要去新校区</u-button>
+        <u-button class="custom-button" @click="transfer1()">我要去新校区</u-button>
       </view>
       <view class="ellipse-container">
-        <u-button class="custom-button" @click="transfer2">我要去老校区</u-button>
+        <u-button class="custom-button" @click="transfer2()">我要去老校区</u-button>
       </view>
     </view>
     <!-- 图片展示区域 -->
@@ -47,7 +47,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px; /* 调整间距 */
 }
 
 .ellipse-container {
@@ -66,8 +66,8 @@ export default {
 
 .image-container img {
   width: 100%;
-   height: 100%;
-   object-fit: cover;
+  max-height: 80vh; /* 调整图片高度，不要超过屏幕高度的80% */
+  object-fit: contain; /* 使用 contain 保持完整图片显示，可能会留有空白 */
 }
 
 </style>
