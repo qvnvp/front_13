@@ -1,31 +1,36 @@
 <!-- 点击头像进入的页面 -->
 <template>
-<view id="moments">
-		<view class="moments_post" v-for="(item, index) in data" :key="index" :id="'post-'+index" style="">
-			<view class="post_left">
-				<image class="post_header" :src="item.authorAvatar" style="border: 1px solid red;" @click="submit(item.authorId)"></image>
+	<view class="container">
+		<!-- 作者用户渲染界面 -->
+		<view class="top_container" style="height: 280px; position: relative;">
+			<image src="../../static/img/back.png" style="position: fixed; top:10px; left: 10px; height: 35px; width: 35px; z-index: 999;" @click="goback"></image>
+			<view>
+				<image src="../../static/logo.png" style="height: 270px; width: 100%; filter: blur(6px)"></image>
 			</view>
-
-			<view class="post_right">
-				<text class="post_username"></text>
-				<view id="paragraph" class="paragraph">{{item.content}}</view>
-				<!-- 相册 to do -->
- 
-				<!-- 时间戳 + 当前用户是否点赞 收藏 + 添加评论功能 to do -->
-				<view class="toolbar">
-					<view class="timestamp">{{formatDate(item.createdTime)}}</view> <!-- 这个函数把 -->
-					<view class="foot_box">
-						<view class="like">
-							<image src="../../static/img/islike.png">{{item.likes}}</image>
-						</view>
-						<view class="collection">
-							<image src="../../static/img/iscollection.png">{{item.collection}}</image>
-						</view>
-						<view class="comment">
-							<image src="../../static/img/comment.png">{{item.comment}}</image>
-						</view>
-					</view>
+			<view style="position: absolute; bottom: 0; height: 80px; width: 100%; background-color: #fff;">
+				<view style="position: absolute; top: -30px; right: 20px; display: flex; flex-direction: row;">
+					<view style="margin: 40px 10px; font-size: 14px; font-weight: bold;">ikun</view>
+					<image src="../../static/logo.png" style="height: 60px; width: 60px;"></image>
 				</view>
+			</view>
+		</view>
+		<!-- 作用文章渲染界面 -->
+		<view v-for="(item, index) in this.data" :key="index"
+			style="height: 100px; width: 100%; padding: 0px 10px; display: flex; flex-direction: row;">
+			<view class="time"
+				style="width: 100px; height: 100%; display: flex; flex-direction: row; padding-top: 5px;">
+				<view style="font-size: 40px;">{{getDateDay(item.createdTime)}}</view>
+				<view style="font-size: 24px; padding-top: 16px;">{{getDateMonth(item.createdTime)}}</view>
+			</view>
+			<!-- <view class="content"
+				style="margin-top: 5px; margin-left: 10px; width: 89px; height: 89px; display: grid; grid-template-columns: repeat(2, 1fr);grid-template-rows: repeat(2, 1fr);grid-gap: 1px;">
+				<view style="height: 40px; width: 40px; border: 1px solid red;"></view>
+				<view style="height: 40px; width: 40px; border: 1px solid red;"></view>
+				<view style="height: 40px; width: 40px; border: 1px solid red;"></view>
+				<view style="height: 40px; width: 40px; border: 1px solid red;"></view>
+			</view> -->
+			<view style="font-size: 15px; font-weight: 500; padding-top: 10px; padding-left: 6px;">
+				{{item.title}}
 			</view>
 		</view>
 	</view>
@@ -37,11 +42,23 @@
 			return {
 				authorId: -1,
 				data: {},
+				authorName: '',
+				authorAvatar: ''
 			}
 		},
 		methods: {
 			submit() {
 				console.log(this.data)
+			},
+			getDateMonth(timestamp) {
+				var date = new Date(timestamp);
+				var month = date.getMonth() + 1;
+				return this.addLeadingZero(month);
+			},
+			getDateDay(timestamp) {
+				var date = new Date(timestamp);
+				var day = date.getDate();
+				return day;
 			},
 			formatDate(timestamp) {
 				var date = new Date(timestamp);
@@ -54,6 +71,11 @@
 			addLeadingZero(number) {
 				return number < 10 ? '0' + number : number;
 			},
+			goback(){
+				uni.navigateBack({
+				    delta: 1
+				});
+			}
 		},
 		onLoad(options) {
 			this.authorId = options.id;
@@ -75,132 +97,5 @@
 </script>
 
 <style scoped>
-	#moments {
-		background: #fff;
-	}
-	
-	.post_header {
-		width: 90upx !important;
-		height: 90upx !important;
-		border-radius: 10upx;
-		margin-top: 8upx;
-	}
-	
-	.post_username {
-		font-size: 32upx;
-		font-weight: 600;
-		color: #36648B;
-	}
-	
-	#moments .moments_post {
-		background: #fff;
-		display: block;
-		border-bottom: 1px solid #f2eeee;
-		padding: 30upx 20upx;
-		position: relative;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-	}
-	
-	#moments .moments_post::before {
-		content: none
-	}
-	
-	#moments .moments_post .post_right {
-		font-size: 32upx;
-		display: table-cell;
-		padding-left: 20upx;
-		width: 100%;
-	}
-	
-	.paragraph {
-		font-size: 14px;
-		line-height: 1.8;
-	}
-	
-	/* 点赞 收藏 评论 */
-	#moments .moments_post .toolbar {
-		/* position: relative; */
-		top: 10upx;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
-		display: flex;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		-ms-flex-align: center;
-		align-items: center;
-		justify-content: space-between;
-	}
-	
-	#moments .moments_post .toolbar .timestamp {
-		color: #757575;
-		font-size: 22upx;
-	}
-	
-	#moments .moments_post .toolbar .foot_box {
-		display: flex;
-		flex-direction: row;
-	}
-	
-	#moments .moments_post .like {
-		width: auto;
-		height: auto;
-		display: flex;
-		align-items: center;
-	}
-	
-	#moments .moments_post .collection {
-		width: auto;
-		height: auto;
-		display: flex;
-		align-items: center;
-	}
-	
-	#moments .moments_post .comment {
-		width: auto;
-		height: auto;
-		display: flex;
-		align-items: center;
-	}
-	
-	#moments .moments_post .toolbar image {
-		padding-left: 20upx;
-		width: 40upx;
-		height: 40upx;
-	}
-	
-	/* 评论区 */
-	.post_footer {
-		margin-top: 30upx;
-		background-color: #f3f3f5;
-		width: 100%;
-	}
-	
-	#moments .moments_post .footer_content {
-		padding-left: 10upx;
-		position: relative;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
-		display: flex;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		-ms-flex-align: center;
-		align-items: center;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap
-	}
-	
-	#moments .moments_post .footer_content .comment-nickname {
-		color: #36648B;
-		font-size: 24upx
-	}
-	
-	#moments .moments_post .footer_content .comment-content {
-		color: #000000;
-		font-size: 24upx
-	}
+
 </style>

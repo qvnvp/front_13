@@ -8,15 +8,13 @@
 				<view style="margin-left: 10px; font-size: 15px; font-weight: 500;">{{data.authorName}}</view>
 			</view>
 			<view class="title" style="margin: 5px 0px; font-size: 18px;">
-				最美的不是下雨天, 是曾与你躲过雨的屋檐!
+				{{data.title}}
 			</view>
 			<view class="content" style="font: 15px 'Microsoft YaHei'; color: #4B5563; margin: 10px 0px;">
-				画框里的你应该什么模样,油画颜料散落在阁楼桌上,与你有关的一切我都画不完,放下笔安静的想起一个地方,午后庄园葡萄藤散发果香,地窖的橡木桶酝酿起过往,回忆年少有一种停格的美感,想起了你还有几年前的远方,这石砌的老墙颜色斑驳着米黄,当初的感觉已在石板路上走散,推开了百叶窗,你剪影的背景有夕阳,温暖柔美的光
+				{{data.content}}
 			</view>
 			<view class="imgages" style="position: relative;">
-				<img style="width: 100%; height: auto;" src="../../static/pic1.jpeg"></img>
-				<img style="width: 100%; height: auto;" src="../../static/pic2.jpeg"></img>
-				<img style="width: 100%; height: auto;" src="../../static/pic3.jpeg"></img>
+				<img style="width: 100%; height: auto;" :src="data.images"></img>
 			</view>
 		</view>
 
@@ -28,7 +26,7 @@
 				</view>
 			</view>
 		</view>
-		
+
 		<view style="height: 10px;"></view>
 	</view>
 </template>

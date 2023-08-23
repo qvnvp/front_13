@@ -108,6 +108,7 @@
 			"style": {
 				"navigationBarTitleText": "校园资讯",
 				"enablePullDownRefresh": false
+				// "navigationStyle":"custom"
 			}
 
 		}, {
@@ -149,7 +150,8 @@
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "",
-		        "enablePullDownRefresh": false
+		        "enablePullDownRefresh": false,
+				"navigationStyle":"custom"
 		    }
 		    
 		}
