@@ -10,6 +10,30 @@ Vue.use(uView);
 const app = new Vue({
   ...App
 })
+uni.addInterceptor('request', {
+    invoke(args) {
+        const user = uni.getStorageSync('user')
+        if (user) {
+            args.header = {
+                'token': user.token
+            }
+        }
+    }
+})
+const httpInterceptor = (Vue, vm) => {
+
+    // 请求拦截部分，如配置，每次请求前都会执行
+    Vue.prototype.$u.http.interceptor.request = (config) => {
+        const user = uni.getStorageSync('user');
+        if (user) {
+            config.header['token'] = user.token;
+        }
+        return config;
+    }
+}
+Vue.use(httpInterceptor, app)
+
+
 app.$mount()
 // #endif
 

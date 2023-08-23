@@ -124,24 +124,32 @@
 				"enablePullDownRefresh": false
 			}
 
-		}, {
-			"path": "pages/services/music/music",
-			"style": {
-				"navigationBarTitleText": "社团详情",
-				"enablePullDownRefresh": false
-			}
-
 		}
-		
-	    ,{
-            "path" : "pages/test/test",
+,{
+            "path" : "pages/dev/dev",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "校园资讯",
                 "enablePullDownRefresh": false
             }
             
-        }
+        },{
+            "path" : "pages/person/userPage/userPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人主页",
+                "enablePullDownRefresh": false
+            }
+            
+        }        ,{
+            "path" : "pages/person/userPage/fabu",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "发布帖子",
+                "enablePullDownRefresh": false
+            }
+            
+        } 
         ,{
             "path" : "pages/article/article",
             "style" :                                                                                    
@@ -159,10 +167,9 @@
 		        "enablePullDownRefresh": false
 		    }
 		    
-		}
+		}  
     ],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
+	"globalStyle": {		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
