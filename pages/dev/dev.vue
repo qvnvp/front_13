@@ -5,7 +5,7 @@
 			<view :class="active ? 'select_title':'no_select_title'" @click="click_title">校园头条</view>
 			<view :class="!active ? 'select_title':'no_select_title'" @click="click_community">学生社区</view>
 			<view></view> <!-- 哨兵 -->
-			<image src="../../static/img/add1.png" style="height: 40px; width: 40px; position: fixed; top: 80vh; right: 4vh; z-index: 999;"></image>
+			<image src="../../static/img/add.png" style="height: 40px; width: 40px; position: fixed; top: 80vh; right: 4vh; z-index: 999;" @click="gotofabu"></image>
 		</view>
 		<view class="father">
 			<view :class="active ? 'view_center':'view_left'">
@@ -173,6 +173,11 @@
 			gotopage(index) {
 				uni.navigateTo({
 					url: "/pages/article/article?data=" + encodeURIComponent(JSON.stringify(this.data[index]))
+				})
+			},
+			gotofabu(){
+				uni.navigateTo({
+					url: "/pages/person/userPage/fabu"
 				})
 			}
 		},
