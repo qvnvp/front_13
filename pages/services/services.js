@@ -156,9 +156,11 @@ import app from "../../App.vue"
 			* 数据绑定  data-index="{{index}}" 
 			* 数据取值  var index = e.currentTarget.dataset.index; var cata = this.list_cata_list[index];
 			*/
-			// services_54_54_click:function(event){
-			
-			// },
+			services_54_54_click:function(event){
+			     uni.navigateTo({
+			       url:"/pages/services/notice/notice"
+			})
+			},
 			
 			/**
 			* services_58_58处理函数

@@ -75,10 +75,10 @@ export default {
 
 .more-button {
   margin-top: 20px;
-  width: 200px;
+  width: 366px;
   height: 20px;
   font-size: 14px;
-  background-color: #b9d4ff;
+  background-color: #ff755a;
   color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
