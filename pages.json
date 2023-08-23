@@ -125,7 +125,7 @@
 			}
 
 		}
-		,{
+,{
             "path" : "pages/dev/dev",
             "style" :                                                                                    
             {
@@ -149,9 +149,35 @@
                 "enablePullDownRefresh": false
             }
             
+        } ,{
+            "path" : "pages/test/test",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
         }
-    ],	"globalStyle": {
-		"navigationBarTextStyle": "black",
+        ,{
+            "path" : "pages/article/article",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
+		    "path" : "pages/article/author",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}    
+],
+	"globalStyle": {		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
