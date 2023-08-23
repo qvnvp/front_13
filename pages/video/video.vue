@@ -2,7 +2,7 @@
 	<view class="wrap">
 		<view class="box">
 			<view class="film_video">
-				<video id="myVideo" style="width: 100%" src="http://minio.autumnclouds.cn:9000/nsrs/2023/08/22/2863efae8c96879104baa4fd363d5d4d.mp4" 
+				<video id="myVideo" style="width: 100%; border:1rpx solid; border-radius: 20rpx;" src="http://minio.autumnclouds.cn:9000/nsrs/2023/08/22/2863efae8c96879104baa4fd363d5d4d.mp4" 
 				@error="videoErrorCallback" :danmu-list="danmuList" enable-danmu controls>
 				</video>
 			</view>
@@ -63,7 +63,7 @@
 		// border: 1rpx solid red;
 		margin: 5rpx;
 		border-radius: 5rpx;
-
+		
 		.film_detail {
 			background-color: #ffffff;
 			margin-top: 10rpx;

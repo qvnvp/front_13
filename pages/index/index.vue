@@ -1,11 +1,11 @@
 <template>
-	<view class="wrap" style="background-color: rgb(240, 240, 240);">
+	<view class="wrap" style="background-color: #f8f8f8;">
 		<view class="swiper-box" style="margin: 20rpx;">
 			<u-swiper :list="list" height="350" :title="title" :effect3d="effect3d" :indicator-pos="indicatorPos"
 				:mode="mode" :interval="3000" @click="toVideo()"></u-swiper>
 		</view>
 		<view class="content" style="">
-			<view class="title">欢迎2023新生报到！</view>
+			<view class="title" >欢迎2023新生报到！</view>
 			<view class="content_1" style="">
 				<view class="img_box">
 					<u-image width="100%" border-radius="5" height="100rpx"
@@ -102,7 +102,7 @@
 				text-align: center;
 				font-size: 60rpx;
 				font-weight: 500;
-				margin-bottom: 100rpx;
+				margin-bottom: 30rpx;
 			}
 
 			.content_1 {
@@ -117,10 +117,11 @@
 					.infobtn,
 					.roombtn {
 						margin-top: 60rpx;
-						background-color: #aaff7f;
-						color: #000000;
+						background-color: #90b4d1;
+						color: #ffffff;
 						//$u-tips-color;
 						border: none;
+						border-radius: 20rpx;
 						font-size: 30rpx;
 						padding: 12rpx 0;
 
@@ -141,6 +142,6 @@
 	/* page不能写带scope的style标签中，否则无效 */
 	page {
 		/* border:1rpx solid red; */
-		background-color: rgb(240, 240, 240);
+		background-color: rgb(248, 248, 248);
 	}
 </style>

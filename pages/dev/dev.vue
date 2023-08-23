@@ -189,12 +189,12 @@
 
 <style lang="scss">
 	.navigate-title {
-		background-color: #fff;
+		background-color: #ffffff;
 		height: 50px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		border-bottom: 1px solid #e3e3e3;
+		border-bottom: 1px solid #ffffff;
 	}
 
 	.no_select_title {
@@ -222,6 +222,7 @@
 		left: 0;
 		transition: transform 0.5s ease;
 		transform: translateX(100%);
+		background-color: #838282;
 	}
 
 	.view_left {
@@ -231,10 +232,12 @@
 		left: 0;
 		transition: transform 0.5s ease;
 		transform: translateX(-100%);
+		background-color: #ffffff;
 	}
 
 	.father {
 		position: relative;
+		background-color: #ffffff;
 	}
 
 	.item {
