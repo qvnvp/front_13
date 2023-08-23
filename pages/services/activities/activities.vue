@@ -10,7 +10,7 @@
     <view class="title" style="background-color:#ffffff;">
       社团纳新
     </view>
-    <view class="content">
+    <view class="content1" @click="toDetail()">
       <view class="img_box1">
         <u-image width="100%" border-radius="5" height="300rpx" :src="src1"></u-image>
       </view>
@@ -26,7 +26,7 @@
         </view>
       </view>
     </view>
-    <view class="content">
+    <view class="content2">
       <view class="img_box2">
         <u-image width="100%" border-radius="5" height="300rpx" :src="src2"></u-image>
       </view>
@@ -42,7 +42,7 @@
         </view>
       </view>
     </view>
-	<view class="content">
+	<view class="content3">
 	  <view class="img_box3">
 	    <u-image width="100%" border-radius="5" height="300rpx" :src="src3"></u-image>
 	  </view>
@@ -100,7 +100,11 @@ export default {
     // 页面加载时的逻辑
   },
   methods: {
-    // 其他方法
+           toDetail:function() {
+	         uni.redirectTo({
+	         	url:'/pages/services/music/music'
+	         })
+            }
   }
 };
 </script>
@@ -119,7 +123,9 @@ export default {
   line-height: 60rpx;
 }
 
-.content {
+.content1 ,
+.content2,
+.content3{
   display: flex;
   flex-direction: row;
   flex: 3;
