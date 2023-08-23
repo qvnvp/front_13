@@ -1,123 +1,132 @@
 {
 	"easycom": {
-			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
-		},
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+		// "^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页"
 			}
-		}
-	    ,{
-            "path" : "pages/person/person",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "个人中心",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/login/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "登录页面",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/register/register",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "初次登录",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/details/details",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "修改个人信息",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/login/findPwd/findPwd",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "找回密码",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/pwd/pwd",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "修改密码",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/login/findPwd/find_changePwd/find_changePwd",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "找回密码-重置",
-                "enablePullDownRefresh": false
-            }
-            
-        },{
-					"path": "pages/services/services",
-					"style": {
-						"navigationBarTitleText": "应用中心",
-						"enablePullDownRefresh": true,
-						"backgroundTextStyle": "dark",
-						"app-plus": {
-							"titleView": false
-						}
-					}
-				},
-		 {
+		}, {
+			"path": "pages/person/person",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/login/login",
+			"style": {
+				"navigationBarTitleText": "登录页面",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/register/register",
+			"style": {
+				"navigationBarTitleText": "初次登录",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/details/details",
+			"style": {
+				"navigationBarTitleText": "修改个人信息",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/login/findPwd/findPwd",
+			"style": {
+				"navigationBarTitleText": "找回密码",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/pwd/pwd",
+			"style": {
+				"navigationBarTitleText": "修改密码",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/login/findPwd/find_changePwd/find_changePwd",
+			"style": {
+				"navigationBarTitleText": "找回密码-重置",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/services/services",
+			"style": {
+				"navigationBarTitleText": "应用中心",
+				"enablePullDownRefresh": true,
+				"backgroundTextStyle": "dark",
+				"app-plus": {
+					"titleView": false
+				}
+			}
+		},
+		{
 			"path": "pages/services/bus_time/bus_time",
 			"style": {
 				"navigationBarTitleText": "校车时刻",
 				"enablePullDownRefresh": false
-				}
+			}
 		},
-		 {
+		{
 			"path": "pages/services/baoxiu/baoxiu",
 			"style": {
 				"navigationBarTitleText": "报修服务",
 				"enablePullDownRefresh": false
-				}
+			}
 		},
-		 {
+		{
 			"path": "pages/services/xiaoli/xiaoli",
 			"style": {
 				"navigationBarTitleText": "校历",
 				"enablePullDownRefresh": false
-				}
+			}
 		},
-		 {
+		{
 			"path": "pages/services/activities/activities",
 			"style": {
 				"navigationBarTitleText": "社团活动",
 				"enablePullDownRefresh": false
-				}
+			}
 		},
-		 {
+		{
 			"path": "pages/services/wenjuan/wenjuan",
 			"style": {
 				"navigationBarTitleText": "调查问卷",
 				"enablePullDownRefresh": false
-				}
+			}
+		}, {
+			"path": "pages/dev/dev",
+			"style": {
+				"navigationBarTitleText": "校园资讯",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/person/userPage/userPage",
+			"style": {
+				"navigationBarTitleText": "个人主页",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/college/college",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-		,{
+        } 
+,{
             "path" : "pages/dev/dev",
             "style" :                                                                                    
             {
@@ -142,8 +151,7 @@
             }
             
         }
-    ],
-	"globalStyle": {
+    ],	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
@@ -165,17 +173,17 @@
 			"iconPath": "static/tabbar_icon/college.png",
 			"selectedIconPath": "static/tabbar_icon/college1.png",
 			"text": "学院信息"
-		},{
+		}, {
 			"pagePath": "pages/services/services",
 			"iconPath": "static/tabbar_icon/services.png",
 			"selectedIconPath": "static/tabbar_icon/services1.png",
 			"text": "服务"
-		},{
+		}, {
 			"pagePath": "pages/dev/dev",
 			"iconPath": "static/tabbar_icon/toutiao.png",
 			"selectedIconPath": "static/tabbar_icon/toutiao1.png",
 			"text": "校园资讯"
-		},{
+		}, {
 			"pagePath": "pages/person/person",
 			"iconPath": "static/tabbar_icon/person.png",
 			"selectedIconPath": "static/tabbar_icon/person1.png",
