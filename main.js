@@ -1,5 +1,8 @@
 import App from './App'
-
+//模板改动222
+import titleBar from '@/components/titleBar.vue'
+Vue.component('titleBar', titleBar)
+//模板改动222
 // #ifndef VUE3
 import Vue from 'vue'
 import './uni.promisify.adaptor'
