@@ -34,15 +34,13 @@
 		<slot>
 			<view class="relative flex flex-row justify-center items-center">
 				<!-- 图片 -->
-				<image class="w-full rounded-20" :src="info.images" mode="widthFix" lazy-load @click="goDetail()">
+				<image class="w-full rounded-20" :src="info.images" mode="widthFix" lazy-load @click="goDetail()" style="border: 1px solid red;">
 				</image>
-				<template v-if="info.type === 'video'">
-					<!-- 视频 -->
-					<!-- <view class="icon-play iconfont iconbofang"></view>
-					<view class="play-info">
-						{{info.playNum}}次播放 {{info.playLong}}
-					</view> -->
-				</template>
+			</view>
+			<view style="display: flex; flex-direction: row; justify-content: flex-end;">
+				<image src="../../../static/img/islike.png" style="height: 20px; width: 20px;">{{info.likes}}</image>
+				<image src="../../../static/img/iscollection.png" style="height: 20px; width: 20px;">{{info.collection}}</image>
+				<image src="../../../static/img/comment.png" style="height: 20px; width: 20px;">{{info.comment}}</image>
 			</view>
 		</slot>
 		<!-- 点赞、评论 -->
@@ -101,6 +99,7 @@
 			item: {
 				handler(val) {
 					this.info = val
+					console.log("info:", val)
 				},
 				immediate: true
 			}

@@ -36,24 +36,24 @@
 					</view>
 				</view>
 			</view>
-			<view :class="!active ? 'view_center':'view_right'" style="border: 1px solid red;">
-				<view style="margin: 10px 15px;">
+			<view :class="!active ? 'view_center':'view_right'">
+				<view v-for="(item, index) in data" :key="index" style="padding: 10px 15px;"> 
 					<view class="author" style="display: flex; flex-direction: row; align-items: center;">
-						<image src="../../static/logo.png" style="height: 40px; width: 40px;"></image>
-						<view style="margin-left: 10px;">雨冰</view>
-					</view>
-					<view class="article_content">
+						<image @click="gotoauthor(item.authorId)" :src="item.authorAvatar" style="height: 40px; width: 40px; border: 1px solid red; border-radius: 5px;"></image>
+						<view @click="gotoauthor(item.authorId)" style="margin-left: 10px;">{{item.authorName}}</view>
+					</view> 
+					<view class="article_content" @click="gotopage(index)" >
 						<view>最美的不是下雨天, 是曾与你躲过雨的屋檐!</view>
 						<view style="display: flex;  justify-content: center;">
-							<image src="../../static/pic2.jpeg" style="width: 100%; height: 200px; border-radius: 10px;"></image>
+							<image src="../../static/pic2.jpeg" style="width: 100%; height: 200px; border-radius: 5px;"></image>
 						</view>
 					</view>
-					<view style="display: flex; flex-direction: row; margin-top: 5px;">
-						<view>点赞</view>
-						<view>收藏</view>
+					<view style="display: flex; flex-direction: row; margin-top: 5px; justify-content: flex-end;">
+						<image src="../../static/img/islike.png" style="width: 20px; height: 20px;">{{item.likes}}</image>
+						<image src="../../static/img/iscollection.png" style="width: 20px; height: 20px;">{{item.collection}}</image>
+						<image src="../../static/img/comment.png" style="width: 20px; height: 20px;">{{item.comment}}</image>
 					</view>
 				</view>
-				
 			</view>			
 		</view>
 	</view>
@@ -66,20 +66,43 @@
 		data() {
 			return {
 				active: 1,
-				tabbar: articleData
+				tabbar: articleData,
+				data: {},
 			}
 		},
 
 		methods: {
 			click_title() {
-
 				this.active = 1
 			},
 			click_community() {
 				this.active = 0
+			},
+			gotoauthor(id) {
+				uni.navigateTo({
+					url: `/pages/article/author?id=${id}`
+				})
+			},
+			gotopage(index) {
+				uni.navigateTo({
+					url: "/pages/article/article?data=" + encodeURIComponent(JSON.stringify(this.data[index]))
+				})
 			}
-
-		}
+		},
+		onLoad() {
+			uni.request({
+				url: '/api/article/hot',
+				method: 'GET',
+				timeout: 5000,
+				success: (res) => { //请求改成后执行回调函数
+					console.log(res)
+					this.data = res.data.data
+				},
+				fail: (err) => {
+					console.log(err)
+				}
+			});
+		},
 	}
 </script>
 
