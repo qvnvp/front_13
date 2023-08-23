@@ -1,7 +1,7 @@
 <template>
     <view class="wrap">
-        <view class="top"></view>
         <view class="content">
+			<u-image class="image" style="padding:10rpx 200rpx;"  mode="widthFix" src="@/static/logo.jpg"></u-image>
             <view class="title u-text-center">欢迎登录</view>
             <u-form ref="validateFormRef" :model="user">
                 <u-form-item label="账号" prop="snumber" :border-bottom="false">
@@ -11,11 +11,12 @@
                     <u-input type="password" class="u-border-bottom" v-model="user.password" placeholder="请输入密码"/>
                 </u-form-item>
             </u-form>
-            <button :style="[inputStyle]" class="loginBtn" @click="login()">登录</button>
+            <button :style="" class="loginBtn" @click="login()">登录</button>
             <view class="alternative">
                 <!-- <view class="password" @click="toRegister('/pages/users/register/register')">注册</view> -->
                 <view class="issue" @click="navigateTo(`/pages/main/login/forget-password/index`)">忘记密码</view>
             </view>
+			
         </view>
     </view>
 </template>
@@ -102,4 +103,5 @@
 
 <style lang="scss" scoped>
     @import "./index.scss";
+	
 </style>

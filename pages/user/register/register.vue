@@ -29,20 +29,29 @@
 			        if (value === '') {
 			                callback(new Error('请输入密码'));
 			        } else {
-			          if (this.d.confirmPassword !== '') {
-			              this.$refs.d.validateField('confirmPwd');
-			          }
-			          callback();
+			    //       if (this.d.confirmPassword !== '') {
+			    //           this.$refs.d.validateField('password',(err) => {
+							// 	if (err) {
+							// 	  callback(err);
+							// 	} else {
+							// 	  callback();
+							// 	}
+							//   });
+							// }
+			    //       else{callback();}
+				callback();
 			        }
 			      };
 			var validatePass2 = (rule, value, callback) => {
 			          if (value === '') {
 			              callback(new Error('请再次输入密码'));
-			          } else if (value !== this.d.password) {
-			              callback(new Error('两次输入密码不一致!'));
-			          } else {
-			              callback();
-			          }
+			          } else{ 
+						  if (value !== this.d.password) {
+							callback(new Error('两次输入密码不一致!'));
+							} 
+						else {
+			              callback();}
+					  }
 			      };
             return {
 				mobile: '',
@@ -84,6 +93,7 @@
 			//注册的方法
 			submit:function(){
 				this.$refs.validateFormRef.validate(valid=>{
+					console.log("验证：",valid)
 					if(valid){
 						console.log("提交")
 						uni.request({
