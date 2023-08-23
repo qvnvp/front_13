@@ -85,6 +85,7 @@
 			submit:function(){
 				this.$refs.validateFormRef.validate(valid=>{
 					if(valid){
+						console.log("提交")
 						uni.request({
 						url:'/api/user/register',
 						method:'POST',
@@ -112,6 +113,7 @@
 						}
 				})
 					}
+					else{console.log("表单验证不通过")}
 				})
 				
 			},codeChange(text) {
@@ -128,21 +130,6 @@
 						timeout:5000,
 						success:(res)=>{//请求成功之后执行的回调函数
 							console.log("res:",res);
-							//3.如果登录成功，将用户的数据存储在storage中，以便验证
-							// if(res.data.code==200){
-							// 	uni.setStorageSync("user",res.data.data)
-							// 	//4.返回个人中心页面
-							// 	uni.reLaunch({
-							// 		url:'/pages/person/person'
-							// 	})
-							// }else if(res.data.code==250){
-							// 	uni.navigateTo({
-							// 		url:'/pages/user/register/register'
-							// 	})
-							// }else{
-							// 	this.$u.toast('用户名或密码错误')
-							// }
-							
 						},
 						fail:(err)=>{
 							console.log(err)

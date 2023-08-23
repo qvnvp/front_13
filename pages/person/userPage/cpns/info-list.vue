@@ -43,11 +43,11 @@
 				</image>
 				</view>
 			</template>
-			<view style="display: flex; flex-direction: row; justify-content: flex-end;">
+			<!-- <view style="display: flex; flex-direction: row; justify-content: flex-end;">
 				<image src="../../../static/img/islike.png" style="height: 20px; width: 20px;">{{info.likes}}</image>
 				<image src="../../../static/img/iscollection.png" style="height: 20px; width: 20px;">{{info.collection}}</image>
 				<image src="../../../static/img/comment.png" style="height: 20px; width: 20px;">{{info.comment}}</image>
-			</view>
+			</view> -->
 		</slot>
 		<!-- 点赞、评论 -->
 		<view class="flex flex-row justify-between items-center text-gray-500 my-10">

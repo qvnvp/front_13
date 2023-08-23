@@ -149,15 +149,7 @@
                 "enablePullDownRefresh": false
             }
             
-        } ,{
-            "path" : "pages/test/test",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
+        } 
         ,{
             "path" : "pages/article/article",
             "style" :                                                                                    
@@ -175,8 +167,8 @@
 		        "enablePullDownRefresh": false
 		    }
 		    
-		}    
-],
+		}  
+    ],
 	"globalStyle": {		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
