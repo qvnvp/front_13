@@ -175,6 +175,14 @@
                 "enablePullDownRefresh": false
             }
             
+        } ,{
+            "path" : "pages/services/webview/webview",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "图书检索",
+                "enablePullDownRefresh": false
+            }
+            
         }
     ],
 	"globalStyle": {		"navigationBarTextStyle": "black",
