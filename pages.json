@@ -120,7 +120,7 @@
 		}, {
 			"path": "pages/college/college",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "学院信息",
 				"enablePullDownRefresh": false
 			}
 
@@ -145,7 +145,7 @@
             "path" : "pages/person/userPage/fabu",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "发布帖子",
                 "enablePullDownRefresh": false
             }
             
