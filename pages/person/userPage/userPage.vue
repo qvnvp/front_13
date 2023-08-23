@@ -72,7 +72,7 @@
 	// import {
 	// 	newsList
 	// } from "@/utils/data/data1.js"
-	import InfoList from "@/pages/person/userPage/info-list.vue"
+	import InfoList from "@/pages/person/userPage/cpns/info-list.vue"
 	export default {
 		components: {
 			InfoList

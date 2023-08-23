@@ -7,10 +7,10 @@
 			<view class="flex flex-row justify-center items-center">
 				<image class="img-header mr-10" :src="info.authorAvatar" mode="widthFix" lazy-load
 					@click.stop="$u.route('/pages/mine/user-space')"></image>
-				<view class="flex justify-center items-center text-gray-500 text-30">{{item.username}}
+				<view class="flex justify-center items-center text-gray-500 text-30">{{item.authorName}}
 					<view class="iconfont iconxingbie-nan tag-age"
-						:class="[item.sex == 0 ? 'iconxingbie-nan' :'iconxingbie-nv girl']">
-						<text class="ml-10">{{item.age}}</text>
+						:class="[user.sex == 0 ? 'iconxingbie-nan' :(user.sex === 1 ? 'iconxingbie-nv' : '')]">
+						<!-- <text class="ml-10">{{user.age}}</text> -->
 					</view>
 				</view>
 			</view>
@@ -29,10 +29,15 @@
 			</view>
 		</view>
 		<!-- 标题 -->
-		<view class="w-100 line-1 text-32 my-10" @click="goDetail()">{{info.title}}</view>
+		<view class="w-100 line-2 text-32 my-20" @click="goDetail()">{{info.title}}</view>
 		<!-- 插槽：图片、视频 -->
+		
 		<slot>
-			<view class="relative flex flex-row justify-center items-center">
+			<template v-if="info.images===null">
+				<view class="w-100 line-3 text-26 my-20">{{info.content}}</view>
+			</template>
+			<template v-else>
+				<view class="relative flex flex-row justify-center items-center">
 				<!-- 图片 -->
 				<image class="w-full rounded-20" :src="info.images" mode="widthFix" lazy-load @click="goDetail()">
 				</image>
@@ -43,31 +48,32 @@
 						{{info.playNum}}次播放 {{info.playLong}}
 					</view> -->
 				</template>
-			</view>
+				</view>
+			</template>
 		</slot>
 		<!-- 点赞、评论 -->
-		<!-- <view class="flex flex-row justify-between items-center text-gray-500 my-10">
+		<view class="flex flex-row justify-between items-center text-gray-500 my-10">
 			<view class="flex flex-row justify-center items-center">
 				<view class="flex flex-row justify-center items-center mr-20" @click.stop="handleMark('smile')">
-					<view class="iconfont mr-10 text-36" :class="[handleIcon('smile',info.infoNum)]"></view>
-					{{info.infoNum.smileNum}}
+					<view class="iconfont icondianzan mr-10 text-36" ></view>
+					{{info.likes}}
 				</view>
-				<view class="flex flex-row justify-center items-center" @click.stop="handleMark('cry')">
+				<!-- <view class="flex flex-row justify-center items-center" @click.stop="handleMark('cry')">
 					<view class="iconfont mr-10 text-36" :class="[handleIcon('cry',info.infoNum)]"></view>
 					{{info.infoNum.cryNum}}
-				</view>
+				</view> -->
 			</view>
 			<view class="flex flex-row justify-center items-center">
 				<view class="flex flex-row justify-center items-center mr-20" @click="handleComment()">
 					<view class="iconfont iconliaotian mr-10 text-36"></view>
-					{{info.commentNum}}
+					{{info.comment}}
 				</view>
 				<view class="flex flex-row justify-center items-center" @click="handleShare()">
-					<view class="iconfont iconfenxiang mr-10 text-36"></view>
-					{{info.shareNum}}
+					<view class="iconfont iconshoucang mr-10 text-36"></view>
+					{{info.collection}}
 				</view>
 			</view>
-		</view> -->
+		</view>
 	</view>
 </template>
 
@@ -94,15 +100,27 @@
 		},
 		data() {
 			return {
-				info: null
+				info: null,
+				user:{},
 			}
 		},
 		watch: {
 			item: {
 				handler(val) {
 					this.info = val
+					console.log("this.info:",val)
 				},
 				immediate: true
+			}
+		},
+		onLoad(){
+			if(this.info){
+				this.$u.get('/api/user/'+this.info.id).then(res=>{
+					console.log(res)
+					this.user=res.data
+				}).catch(err=>{
+					console.log(err)
+				})
 			}
 		},
 		methods: {

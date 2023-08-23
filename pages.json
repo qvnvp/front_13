@@ -133,7 +133,16 @@
                 "enablePullDownRefresh": false
             }
             
-        }    ],
+        }        ,{
+            "path" : "pages/person/userPage/fabu",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
