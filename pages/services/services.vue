@@ -10,7 +10,7 @@
 					<view class="services_26">
 						<view class="services_28">
 							<image v-on:click="services_29_29_click()"  src="/static/services/images/services_29_29.jpg" mode="scaleToFill" border="0"    class="services_29"></image>
-							<text decode="true" class="services_30">身份认证</text>
+							<text decode="true" class="services_30">认证</text>
 						</view>
 						<view class="services_31">
 							<image v-on:click="services_32_32_click()"  src="/static/services/images//bus.png" mode="scaleToFill" border="0"    class="services_32"></image>

@@ -25,9 +25,6 @@
 				
 			}
 		},
-		onReady() {
-				this.$refs.validateFormRef.setRules(this.rules);
-		},
 		methods: {
 			submit(){
 				//判断修改成功后进入重置密码页面
