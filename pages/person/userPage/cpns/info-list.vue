@@ -108,7 +108,7 @@
 			item: {
 				handler(val) {
 					this.info = val
-					console.log("this.info:",val)
+					// console.log("this.info:",val)
 				},
 				immediate: true
 			}

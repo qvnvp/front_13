@@ -125,18 +125,31 @@
 			// 	url:'/api/article/own'
 			// })
 		//发送 AJAX 请求获取文章信息列表
-			axios.get('/api/article/own').then(response => {
-				this.newsList[0]= response.data.data; // 将返回的数据保存到组件的数据属性中
-				console.log("newslist[0]:",this.newsList[0])
-			}).catch(error => {
-				console.error(error);
+		
+			this.$u.get('/api/article/own').then(res=>{
+				this.newsList[0]= res.data;
+				console.log("this.newsList[0]:",this.newsList[0])
+			}).catch(err=>{
+				console.log(err)
 			});
-			axios.get('/api/behavior/collection').then(response => {
-				this.newsList[1]= response.data.data; // 将返回的数据保存到组件的数据属性中
-				console.log("newslist[1]:",this.newsList[1])
-			}).catch(error => {
-				console.error(error);
+			this.$u.get('/api/behavior/collection').then(res=>{
+				this.newsList[1]= res.data;
+				console.log("this.newsList[1]:",this.newsList[1])
+			}).catch(err=>{
+				console.log(err)
 			});
+			// axios.get('/api/article/own').then(response => {
+			// 	this.newsList[0]= response.data.data; // 将返回的数据保存到组件的数据属性中
+			// 	console.log("newslist[0]:",this.newsList[0])
+			// }).catch(error => {
+			// 	console.error(error);
+			// });
+			// axios.get('/api/behavior/collection').then(response => {
+			// 	this.newsList[1]= response.data.data; // 将返回的数据保存到组件的数据属性中
+			// 	console.log("newslist[1]:",this.newsList[1])
+			// }).catch(error => {
+			// 	console.error(error);
+			// });
 		},
 		onLoad() {
 			this.$u.get('/api/user').then(res=>{

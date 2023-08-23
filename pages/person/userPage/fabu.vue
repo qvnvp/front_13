@@ -33,12 +33,13 @@
 			<view class="iconfont icontupian text-50 mx-10 animate__animated" hover-class="animate__jello"
 				@click="handleBottom('upload')"></view>
 				<view class="ml-auto mr-20">
-					<u-button text="发布" color="linear-gradient(to right, #dcc20b, #01906c)"
-						:customStyle="{width:'150rpx',height:'60rpx'}" @click="submit"></u-button>
+					<!-- <u-button class="button" text="发布" color="linear-gradient(to right, #dcc20b, #01906c)"
+						:customStyle="{width:'150rpx',height:'60rpx'}" @click="submit"></u-button> -->
+					<u-button class="button" shape="square"  @click="submit">发布</u-button>
 				</view>
 		</view>
 		<!-- 中间弹出公告栏 -->
-		<u-popup :show="popupShow" round="20" mode="center" :customStyle="{width:'80%'}">
+		<!-- <u-popup :show="popupShow" round="20" mode="center" :customStyle="{width:'80%'}">
 			<view class="flex flex-col justify-center items-center m-20">
 				<view class="flex justify-center items-center">
 					<image class="notice-img" src="/static/img/demo/summer.svg" mode="widthFix"></image>
@@ -51,7 +52,7 @@
 				</view>
 				<u-button :customStyle="btnStyle" :ripple="true" shape="circle" @click="closePopup">朕知道了</u-button>
 			</view>
-		</u-popup>
+		</u-popup> -->
 		<!-- 底部弹出操作菜单 -->
 		<!-- <u-action-sheet :description="actionDesc" round="20" :actions="actionList" :show="actionShow"
 			:safeAreaInsetBottom="true" cancelText="取消" @select="selectAction" @close="actionShow = false">
