@@ -51,7 +51,7 @@
 		</view>
 		<view class="re-bottom bg-white shadow-sm">
 			<view class="bottom-right " @click="join()">
-				<text class="bottom-text text-white text-bold">{{"加入"}}</text>
+				<text class="bottom-text text-white text-bold">{{"申请加入"}}</text>
 			</view>
 		</view>
 		<u-toast ref="uToast" />
@@ -330,6 +330,7 @@
 	.bottom-right {
 		/* 		border:1rpx solid red; */
 		margin-left: 150rpx;
+		
 		width: 60%;
 		height: 100rpx;
 		line-height: 100rpx;
