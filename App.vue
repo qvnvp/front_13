@@ -22,4 +22,8 @@
 	@import "/static/css/animate.css";
 	/* 样式库 */
 	@import '/static/css/thinco.scss';
+	//模板改动111
+	@import "ReView/fontawesome.css";
+	@import "Review/component.css";
+	//模板改动111
 </style>
