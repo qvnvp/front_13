@@ -16,9 +16,11 @@
       </div>
       <div class="form-group">
         <label for="image">请上传需维修处图片 <span class="required">*</span></label>
+		<u-upload ref="upload" :fileList="imgList" @afterRead="autoUpload" @delete="deletePic" name="1" multiple
+			:maxCount="9" previewFullImage>
+		</u-upload>
         <div class="image-upload">
           <input type="file" id="image" accept="image/*" @change="handleImageChange" required>
-		   <img class="addphoto" @click="upload" src="/static/services/images/addphoto.png" alt="Upload">
         </div>
       </div>
       <button class="submit-button" type="submit" @click.prevent="submitForm">提交</button>
@@ -51,9 +53,9 @@ export default {
           duration: 2000
       });
       }
-    }
-  }
-};
+    },
+},
+}
 </script>
 
 <style lang="scss">
