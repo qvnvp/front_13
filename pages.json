@@ -120,7 +120,14 @@
 		}, {
 			"path": "pages/college/college",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "学院信息",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/services/music/music",
+			"style": {
+				"navigationBarTitleText": "社团详情",
 				"enablePullDownRefresh": false
 			}
 
