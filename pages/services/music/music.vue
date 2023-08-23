@@ -1,9 +1,9 @@
 <template>
   <view class="wrap">
     <view class="img_box">
-      <u-image width="100%" border-radius="5" height="450rpx" :src="src"></u-image>
+      <u-image width="100%" border-radius="5rpx" height="450rpx" :src="src"></u-image>
     </view>
-    <view class="miusic_detail">
+    <view class="music_detail">
       <view class="title">
         社团介绍：我校哥乐相声社作为西南高校中首屈一指的校园相声团体，一直专注于用清新、幽默的风格给观众带来欢乐，以其专业的表演能力吸引着越来越多的年轻人关注我们优秀的传统文化，为广大观众送去欢乐。
       </view>
@@ -15,7 +15,7 @@
         欢迎你的加入！
       </view>
     </view>
-    <u-button>更多</u-button>
+    <u-button class="more-button">更多</u-button>
   </view>
 </template>
 
@@ -23,7 +23,7 @@
 export default {
   data() {
     return {
-      src: 'https://bpic.588ku.com/back_pic/05/99/04/675f2500db0994f.jpg',
+      src: 'https://tse2-mm.cn.bing.net/th/id/OIP-C.hXV8GBspfaxW8Juik4G-vgHaDt?w=190&h=95&c=7&r=0&o=5&dpr=2&pid=1.7',
     };
   },
   methods: {},
@@ -36,7 +36,7 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 20rpx;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
 }
 
 .img_box {
@@ -55,12 +55,12 @@ export default {
 }
 
 .title {
-	  margin-top: 20px;
   font-size: 14px;
   color: #333333;
   line-height: 1.6;
 }
- .person{
+
+.person {
   font-size: 14px;
   margin-top: 20px;
   color: #333333;
@@ -68,16 +68,21 @@ export default {
 }
 
 .type {
-	 margin-top: 20px;
   font-size: 14px;
   color: #333333;
+  margin-top: 20px;
 }
 
-u-button {
+.more-button {
   margin-top: 20px;
-   width: 1rpx; /* 调整按钮宽度 */
-    height: 5px; /* 调整按钮高度 */
-    font-size: 18px; /* 调整按钮内文本字号 */
-	 background-color: #ffcc00; 
+  width: 200px;
+  height: 20px;
+  font-size: 14px;
+  background-color: #b9d4ff;
+  color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  line-height: 40px;
 }
 </style>

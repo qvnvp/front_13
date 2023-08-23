@@ -16,13 +16,13 @@
       </view>
       <view class="detail1">
         <view class="detail_name1">
-         音乐协会
+         相声社
         </view>
         <view class="detail_publicize1">
-        热爱音乐你就来
+        热爱相声你就来
         </view>
         <view class="detail_introduction1">
-          爱音乐，爱生活，爱自己，加QQ群：xxxxx了解更多
+          爱相声您就来  加QQ群：xxxxx了解更多
         </view>
       </view>
     </view>
@@ -91,7 +91,7 @@ export default {
       mode: 'round',
       indicatorPos: 'bottomCenter',
       effect3d: true,
-      src1: 'https://ts2.cn.mm.bing.net/th?id=OIP-C.PSFUnIpsCJ5UyX_PV0ky1AHaLK&w=203&h=306&c=8&rs=1&qlt=90&o=6&dpr=2&pid=3.1&rm=2', // 图片的URL
+      src1: 'https://tse2-mm.cn.bing.net/th/id/OIP-C.I4d7WDZ9MviFLH94YBqadAHaLI?w=190&h=286&c=7&r=0&o=5&dpr=2&pid=1.7', // 图片的URL
    src2:'https://ts1.cn.mm.bing.net/th?id=OIP-C.wEFmwJ63OYL54eGe_r03agHaKu&w=207&h=300&c=8&rs=1&qlt=90&o=6&dpr=2&pid=3.1&rm=2',
 	src3:'https://tse2-mm.cn.bing.net/th/id/OIP-C.oPkxXNSH-DGNAsLsqEWTHQHaLH?w=190&h=285&c=7&r=0&o=5&dpr=2&pid=1.7',
 	};
