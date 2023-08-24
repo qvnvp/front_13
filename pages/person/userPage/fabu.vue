@@ -75,6 +75,7 @@
 		methods:{
 			// 自动上传
 			async autoUpload(event) {
+				console.log("自动上传")
 				// 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
 				let chooseList = [].concat(event.file) // 当前选中列表
 				let fileListLen = this.imgList.length // 原始文件列表
@@ -98,6 +99,7 @@
 						message: '',
 						url
 					}))
+					console.log("imgList:",this.imgList)
 					// 文件索引后移一位
 					fileListLen++
 				}
@@ -105,6 +107,7 @@
 			// 上传图片
 			uploadFilePromise(url) {
 				return new Promise((resolve, reject) => {
+					console.log("上传图片")
 					let a = uni.uploadFile({
 						url: '/api/file/picture',
 						filePath: url,
@@ -129,6 +132,7 @@
 				this.draftShow = false
 				//this.article.images=this.imgList
 				this.article.images=JSON.stringify(this.imgList)
+				console.log("images:",this.article.images)
 				//解析后端返回的数据JSON.parse(this.article.images)
 				uni.request({
 					url:'/api/article',

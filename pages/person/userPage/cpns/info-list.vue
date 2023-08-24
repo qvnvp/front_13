@@ -9,8 +9,8 @@
 					@click.stop="$u.route('/pages/mine/user-space')"></image>
 				<view class="flex justify-center items-center text-gray-500 text-30">{{item.authorName}}
 					<view class="iconfont iconxingbie-nan tag-age"
-						:class="[user.sex == 0 ? 'iconxingbie-nan' :(user.sex === 1 ? 'iconxingbie-nv' : '')]">
-						<!-- <text class="ml-10">{{user.age}}</text> -->
+						:class="[user.sex == 1 ? 'iconxingbie-nan' :'iconxingbie-nv girl']">
+						<!-- <text class="ml-10">{{user.age}}</text> (user.sex == 0 ? 'iconxingbie-nv girl' : '')-->
 					</view>
 				</view>
 			</view>
@@ -51,16 +51,7 @@
 		</slot>
 		<!-- 点赞、评论 -->
 		<view class="flex flex-row justify-between items-center text-gray-500 my-10">
-			<view class="flex flex-row justify-center items-center">
-				<view class="flex flex-row justify-center items-center mr-20" @click.stop="handleMark('smile')">
-					<view class="iconfont icondianzan mr-10 text-36" ></view>
-					{{info.likes}}
-				</view>
-				<!-- <view class="flex flex-row justify-center items-center" @click.stop="handleMark('cry')">
-					<view class="iconfont mr-10 text-36" :class="[handleIcon('cry',info.infoNum)]"></view>
-					{{info.infoNum.cryNum}}
-				</view> -->
-			</view>
+			
 			<view class="flex flex-row justify-center items-center">
 				<view class="flex flex-row justify-center items-center mr-20" @click="handleComment()">
 					<view class="iconfont iconliaotian mr-10 text-36"></view>
@@ -70,6 +61,16 @@
 					<view class="iconfont iconshoucang mr-10 text-36"></view>
 					{{info.collection}}
 				</view>
+			</view>
+			<view class="flex flex-row justify-center items-center">
+				<view class="flex flex-row justify-center items-center mr-20" @click.stop="handleMark('smile')">
+					<view class="iconfont icondianzan mr-10 text-36" ></view>
+					{{info.likes}}
+				</view>
+				<!-- <view class="flex flex-row justify-center items-center" @click.stop="handleMark('cry')">
+					<view class="iconfont mr-10 text-36" :class="[handleIcon('cry',info.infoNum)]"></view>
+					{{info.infoNum.cryNum}}
+				</view> -->
 			</view>
 		</view>
 	</view>

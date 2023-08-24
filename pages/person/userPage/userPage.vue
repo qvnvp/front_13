@@ -41,14 +41,14 @@
 		<!-- 列表内容 -->
 		<template v-if="tabIndex === 0">
 			<!-- 帖子列表 -->
-			<info-list :item="item" v-for="(item,index) in list" :key="item.id" :index="index" 
+			<info-list :item="item" v-for="(item,index) in newsList1" :key="item.id" :index="index" 
 				>
 			</info-list>
 			<u-loadmore :status="loadStatus"></u-loadmore>
 		</template>
 		<template v-else>
 			<!-- 动态列表 -->
-			<info-list :item="item" v-for="(item,index) in list" :key="item.id" :index="index" 
+			<info-list :item="item" v-for="(item,index) in newsList2" :key="item.id" :index="index" 
 				>
 			</info-list>
 			<u-loadmore :status="loadStatus"></u-loadmore>
@@ -80,7 +80,8 @@
 		data() {
 			return {
 				showPopup: false,
-				newsList:[[],[]],
+				newsList1:[],
+				newsList2:[],
 				author:{
 					authorAvatar:'',
 					authorName:'',
@@ -109,12 +110,12 @@
 					
 					{
 						name: "帖子",
-						//list: newsList[0].list,
+						//list: newsList[0],
 						loadStatus: 'loadmore'
 					},
 					{
-						name: "动态",
-						//list: newsList[1].list,
+						name: "收藏",
+						//list: newsList[1],
 						loadStatus: 'loadmore'
 					}
 				],
@@ -125,19 +126,19 @@
 			// 	url:'/api/article/own'
 			// })
 		//发送 AJAX 请求获取文章信息列表
-		
 			this.$u.get('/api/article/own').then(res=>{
-				this.newsList[0]= res.data;
-				console.log("this.newsList[0]:",this.newsList[0])
+				this.newsList1= res.data;
+				console.log("this.newsList[0]:",this.newsList1)
 			}).catch(err=>{
 				console.log(err)
 			});
 			this.$u.get('/api/behavior/collection').then(res=>{
-				this.newsList[1]= res.data;
-				console.log("this.newsList[1]:",this.newsList[1])
+				this.newsList2= res.data;
+				console.log("this.newsList[1]:",this.newsList2)
 			}).catch(err=>{
 				console.log(err)
 			});
+			console.log('list:',this.list)
 			// axios.get('/api/article/own').then(response => {
 			// 	this.newsList[0]= response.data.data; // 将返回的数据保存到组件的数据属性中
 			// 	console.log("newslist[0]:",this.newsList[0])
@@ -157,28 +158,18 @@
 				this.user=res.data
 			}).catch(err=>{
 				console.log(err)
-			})
-			/* uni.request({
-				url:'/api/user',
-				method:'GET',
-				timeout:5000,
-				success: function(res) {
-					console.log(res)
-					this.user=res.data.data
-					console.log("jjjjj:",this.user)
-				},
-				fail: function(err){
-					console.log(err)
-				}
-			}) */
+			});
 		},
 		computed: {
-			list() {
-				return this.newsList[this.tabIndex]
-			},
-			loadStatus() {
-				return this.tabList[this.tabIndex].loadStatus
-			}
+			// list() {
+			// 	return this.newsList[this.tabIndex]
+			// },
+			// list() {
+			// 	return this.tabList[this.tabIndex].list
+			// },
+			// loadStatus() {
+			// 	return this.tabList[this.tabIndex].loadStatus
+			// }
 		},
 		// 监听原生标题栏按钮点击事件
 		onNavigationBarButtonTap(e) {

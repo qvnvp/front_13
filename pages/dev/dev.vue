@@ -41,18 +41,18 @@
 				<view v-for="(item, index) in data" :key="index" style="padding: 10px 15px;">
 					<view class="author" style="display: flex; flex-direction: row; align-items: center;">
 						<image @click="gotoauthor(item.authorId)" :src="item.authorAvatar"
-							style="height: 40px; width: 40px; border: 1px solid red; border-radius: 5px;"></image>
+							style="height: 40px; width: 40px; border: 5rpx solid #5982e1; border-radius: 5px;"></image>
 						<view @click="gotoauthor(item.authorId)" style="margin-left: 10px;">{{item.authorName}}</view>
 					</view>
-					<view class="article_content" @click="gotopage(index)">
+					<view class="article_content w-100 line-2 text-32 my-20" style="margin-bottom: 5rpx;" @click="gotopage(index)">
 						<view>{{item.title}}</view>
-						<view style="display: flex;  justify-content: center;">
-							<image src="../../static/pic2.jpeg" style="width: 100%; height: 200px; border-radius: 5px;">
+						<view style="display: flex;  justify-content: center; margin-bottom: 5rpx;" >
+							<image :src="item.images" style="width: 100%; height: 200px; border-radius: 5px;">
 							</image>
 						</view>
 					</view>
-					<view style="display: flex; flex-direction: row; margin-top: 5px; justify-content: flex-end;">
-						<image :src="item.isLiked  ? '../../static/img/like.png':'../../static/img/islike.png'"
+					<!-- <view style="display: flex; flex-direction: row; margin-top: 5px; justify-content: flex-end;">
+						<image  :src="item.isLiked  ? '../../static/img/like.png':'../../static/img/islike.png'"
 							@click="like(item.id)" style="width: 20px; height: 20px;">{{item.likes}}</image>
 						<image
 							:src="item.isCollected ? '../../static/img/collection.png':'../../static/img/iscollection.png'"
@@ -61,6 +61,25 @@
 						</image>
 						<image src="../../static/img/comment.png" style="width: 20px; height: 20px;">{{item.comment}}
 						</image>
+					</view> -->
+					<view class="flex flex-row justify-between items-center text-gray-500 my-10">
+						
+						<view class="flex flex-row justify-center items-center">
+							<view class="flex flex-row justify-center items-center mr-20" @click="collect(item.id)">
+								<view class="iconfont mr-10 text-36" :class="[item.isCollected == 1 ? 'iconshoucang11' :'iconshoucang1']"></view>
+								{{item.collection}}
+							</view>
+							<view class="flex flex-row justify-center items-center" >
+								<view  class="iconfont iconliaotian mr-10 text-36"></view>
+								{{item.comment}}
+							</view>
+						</view>
+						<view class="flex flex-row justify-center items-center">
+							<view class="flex flex-row justify-center items-center mr-20" @click.stop="handleMark('smile')">
+								<view class="iconfont mr-10 text-36" :class="[item.isLiked == 1 ? 'icondianzan1' :'icondianzan']" @click="like(item.id)"></view>
+								{{item.likes}}
+							</view>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -255,7 +274,7 @@
 			.photo {
 				width: 100%;
 				height: 120px;
-				border-radius: 5px;
+				border-radius: 10rpx;
 			}
 
 			.foot_father {

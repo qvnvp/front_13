@@ -7,7 +7,7 @@
             </u-form-item> -->
 			
 			<u-form-item label="昵称" prop="nickname" >
-			    <u-input v-model="user.nickname" placeholder="请输入昵称"/>
+			    <u-input v-model="user.name" placeholder="请输入昵称"/>
 			</u-form-item>
 			<u-form-item label="学院" prop="college" >
 			    <u-input v-model="user.college" placeholder="请输入所在学院"/>
@@ -86,6 +86,7 @@
 				leixing:'普通用户',
                 isAgreement: false,
 				user:{
+					name:'',
 					accounts:'',
 					age:'',
 					password:'',
@@ -133,10 +134,10 @@
 									duration: 2000
 								}) 
 								setTimeout(()=>{
-									uni.navigateTo({
+									uni.reLaunch({
 										url:'/pages/person/person'
 									});
-								},2000); //延迟2秒后跳转
+								},1000); //延迟2秒后跳转
 							}
 							else{
 								uni.showToast({
