@@ -25,9 +25,10 @@
 			<view class="text-gray-500 my-20">
 				分享图片
 			</view>
-			<u-upload ref="upload" :fileList="imgList" @afterRead="autoUpload" @delete="deletePic" name="1" multiple
+			<!-- <u-upload ref="upload" :fileList="imgList" @afterRead="autoUpload" @delete="deletePic" name="1" multiple
 				:maxCount="9" previewFullImage>
-			</u-upload>
+			</u-upload> -->
+			<u-upload ref="uUpload" :action="action" :auto-upload="true" ></u-upload>
 		</view>
 		<view class="bottom-handle">
 			<view class="iconfont iconcaidan text-50 mx-10 animate__animated" hover-class="animate__jello"></view>
@@ -44,6 +45,7 @@
 	export default{
 		data(){
 			return{
+				action:'/api/file/picture',
 				border:true,
 				autoheight:true,
 				// 草稿箱提示
@@ -55,13 +57,7 @@
 					"title": ''
 				},
 				// 图片列表
-				imgList: [{
-						url: '/static/img/demo/autumn.svg',
-					},
-					{
-						url: '/static/img/demo/winter.svg',
-					}
-				],
+				imgList: [],
 				// 按钮配置
 				btnStyle: {
 					width: "450rpx",
@@ -131,9 +127,22 @@
 			submit() {
 				this.draftShow = false
 				//this.article.images=this.imgList
+				let files = [];
+				// 通过filter，筛选出上传进度为100的文件(因为某些上传失败的文件，进度值不为100，这个是可选的操作)
+				files = this.$refs.uUpload.lists.filter(val => {
+					return val.progress == 100;
+				})
+				console.log("files:",files)
+				for (let i = 0; i < files.length; i++) {
+					const url = files[i].response.data
+					this.imgList.push(url)
+					console.log("imgList:",this.imgList)
+				}
+				
 				this.article.images=JSON.stringify(this.imgList)
-				console.log("images:",this.article.images)
+				// console.log("images:",this.article.images)
 				//解析后端返回的数据JSON.parse(this.article.images)
+				
 				uni.request({
 					url:'/api/article',
 					method:'POST',
@@ -141,6 +150,9 @@
 					timeout:5000,
 					success: (res) => {
 						console.log("res:",res)
+						uni.navigateTo({
+							url:'/pages/dev/dev'
+						})
 					},
 					fail: (err) => {
 						console.log("err:",err)

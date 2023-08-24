@@ -14,7 +14,7 @@
             <button :style="" class="loginBtn" @click="login()">登录</button>
             <view class="alternative">
                 <!-- <view class="password" @click="toRegister('/pages/users/register/register')">注册</view> -->
-                <view class="issue" @click="navigateTo(`/pages/main/login/forget-password/index`)">忘记密码</view>
+                <view class="issue" @click="toFindPwd()">忘记密码</view>
             </view>
 			
         </view>
@@ -54,11 +54,11 @@
 		},
         
         methods: {
-			// toRegister:function(){
-			// 	uni.navigateTo({
-			// 		url:'/pages/user/register/register'
-			// 	})
-			// },
+			toFindPwd:function(){
+				uni.navigateTo({
+					url:'/pages/user/login/findPwd/findPwd'
+				})
+			},
 			//登录的方法
 			login:function(){
 				//1.验证表单是否都通过了验证
