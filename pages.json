@@ -9,69 +9,63 @@
 			"style": {
 				"navigationBarTitleText": "首页"
 			}
-		}, 
-		{
-		    "path" : "pages/video/video",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "宣传视频",
-		        "enablePullDownRefresh": false
-		    }
-		    
 		},
 		{
-		    "path" : "pages/check/check",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "报道须知",
-		        "enablePullDownRefresh": false
-		    }
-		    
+			"path": "pages/video/video",
+			"style": {
+				"navigationBarTitleText": "宣传视频",
+				"enablePullDownRefresh": false
+			}
+
 		},
 		{
-		    "path" : "pages/info/info",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "采集个人信息",
-		        "enablePullDownRefresh": true
-		    }
-		    
+			"path": "pages/check/check",
+			"style": {
+				"navigationBarTitleText": "报道须知",
+				"enablePullDownRefresh": false
+			}
+
 		},
 		{
-		    "path" : "pages/room/room",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "宿舍组队",
-		        "enablePullDownRefresh": false
-		    }
-		    
+			"path": "pages/info/info",
+			"style": {
+				"navigationBarTitleText": "采集个人信息",
+				"enablePullDownRefresh": true
+			}
+
 		},
 		{
-		    "path" : "pages/roomdetail/roomdetail",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "宿舍详情",
-		        "enablePullDownRefresh": false
-		    }
-		    
+			"path": "pages/room/room",
+			"style": {
+				"navigationBarTitleText": "宿舍组队",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
 		},
 		{
-		    "path" : "pages/roomtable/roomtable",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "宿舍需求表",
-		        "enablePullDownRefresh": false
-		    }
-		    
+			"path": "pages/roomdetail/roomdetail",
+			"style": {
+				"navigationBarTitleText": "宿舍详情",
+				"enablePullDownRefresh": false
+			}
+
 		},
 		{
-		    "path" : "pages/myroom/myroom",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "我的申请",
-		        "enablePullDownRefresh": false
-		    }
-		    
+			"path": "pages/roomtable/roomtable",
+			"style": {
+				"navigationBarTitleText": "宿舍需求表",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/myroom/myroom",
+			"style": {
+				"navigationBarTitleText": "我的申请",
+				"enablePullDownRefresh": false
+			}
+
 		},
 		{
 			"path": "pages/person/person",
@@ -167,7 +161,46 @@
 				"navigationBarTitleText": "调查问卷",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path": "pages/services/chuangye/chuangye",
+			"style": {
+				"navigationBarTitleText": "交叉创新中心",
+				"enablePullDownRefresh": false
+			}
+
 		}, {
+			"path": "pages/services/jiaofei/jiaofei",
+			"style": {
+				"navigationBarTitleText": "在线缴费",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/services/xinli/xinli",
+			"style": {
+				"navigationBarTitleText": "心理咨询预约",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/services/pinjiao/pinjiao",
+			"style": {
+				"navigationBarTitleText": "评教系统",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+		            "path" : "pages/services/webview/webview",
+		            "style" :                                                                                    
+		            {
+		                "navigationBarTitleText": "图书检索",
+		                "enablePullDownRefresh": false
+		            }
+		            
+		        },{
 			"path": "pages/dev/dev",
 			"style": {
 				"navigationBarTitleText": "校园资讯",
@@ -189,53 +222,56 @@
 				"enablePullDownRefresh": false
 			}
 
-		}
-,{
-            "path" : "pages/dev/dev",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "校园资讯",
-                "enablePullDownRefresh": false
-            }
-            
-        },{
-            "path" : "pages/person/userPage/userPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "个人主页",
-                "enablePullDownRefresh": false
-            }
-            
-        }        ,{
-            "path" : "pages/person/userPage/fabu",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "发布帖子",
-                "enablePullDownRefresh": false
-            }
-            
-        } 
-        ,{
-            "path" : "pages/article/article",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        },
+		}, {
+			"path": "pages/dev/dev",
+			"style": {
+				"navigationBarTitleText": "校园资讯",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/person/userPage/userPage",
+			"style": {
+				"navigationBarTitleText": "个人主页",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/person/userPage/fabu",
+			"style": {
+				"navigationBarTitleText": "发布帖子",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/article/article",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		},
 		{
-		    "path" : "pages/article/author",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "",
-		        "enablePullDownRefresh": false,
-				"navigationStyle":"custom"
-		    }
-		    
-		}  
-    ],
-	"globalStyle": {		"navigationBarTextStyle": "black",
+			"path": "pages/article/author",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		},
+		{
+			"path": "pages/services/music/music",
+			"style": {
+				"navigationBarTitleText": "社团详情",
+				"enablePullDownRefresh": false
+
+			}
+
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"

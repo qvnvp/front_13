@@ -1,52 +1,67 @@
 <template>
 	<view class="wrapp">
-		<view class="empty_content" v-if="!isShow" style="margin-top: 300rpx;
-		 border:1rpx solid red;fontSize:35rpx;text-align: center; color:#6d6d6d">
-			您还未登录
+		<view class="navigate"
+			style="height: 44px; width:100%; position: fixed; top: 0; left: 0; z-index: 999; background-color: #FFF; display: flex; flex-direction: row;">
+			<view style="width: 41%;">
+				<img src="../../static/img/back.png" style="height: 30px; width: 30px; margin: 5px;"
+					@click="goback"></img>
+			</view>
+			<view style="padding: 10px 0px; font-size: 16px; font-weight: bold;">宿舍组队</view>
 		</view>
-		<!-- <u-divider color="#6d6d6d" half-width="30%" fontSize="30" border-color="#6d6d6d" >您还未登录</u-divider> -->
-		<view class="wrap" v-if="isShow">
-			<view class="myrequest" style="padding-top: 10rpx; padding-bottom: 10rpx;" @click="toMyroom()">
-				<text class="mytext" style="font-size: 20px; color: red;">我的申请</text>
-				<u-icon name="arrow-right-double" size="40rpx" color="red"></u-icon>
+		<view style="margin-top: 40px;">
+			<view class="empty_content" v-if="!isShow" style="margin-top: 300rpx;
+			fontSize:35rpx;text-align: center; color:#6d6d6d">
+				您还未登录
 			</view>
-			<view class="waterfall">
-				<u-waterfall v-model="flowList" ref="uWaterfall" add-time="50">
-					<template v-slot:left="{leftList}">
-						<view class="demo-warter" v-for="(item,index) in leftList" :key="index" @click="toRoomDetail(item.id)">
-							<view class="demo-title">
-								<!-- {{item.id}} -->
-								{{item.building[0]+item.building[2]+item.dormitoryno}}
+			<!-- <u-divider color="#6d6d6d" half-width="30%" fontSize="30" border-color="#6d6d6d" >您还未登录</u-divider> -->
+			<view class="wrap" v-if="isShow" style="">
+				<view class="myrequest"
+					style="padding-top: 10rpx; padding-bottom: 10rpx;right: 10rpx; ;
+					width: 100%; display: flex; flex-direction: row;  justify-content: flex-end;"
+					@click="toMyroom()">
+					<text class="mytext" style="font-size: 20px; color: #00007f ">我的申请</text>
+					<u-icon name="arrow-right-double" size="40rpx" color="#00007f"></u-icon>
+				</view>
+				<view class="waterfall">
+					<u-waterfall v-model="flowList" ref="uWaterfall" add-time="50">
+						<template v-slot:left="{leftList}">
+							<view class="demo-warter" v-for="(item,index) in leftList" :key="index"
+								@click="toRoomDetail(item.id)">
+								<view class="demo-title">
+									<!-- {{item.id}} -->
+									{{item.building[0]+item.building[2]+item.dormitoryno}}
+								</view>
+								<view class="demo-price">
+									已组{{item.count}}/4人
+								</view>
+								<view class="demo-shop">
+									{{item.building}}
+								</view>
 							</view>
-							<view class="demo-price">
-								已组{{item.count}}/4人
+						</template>
+						<template v-slot:right="{rightList}">
+							<view class="demo-warter" v-for="(item, index) in rightList" :key="index"
+								@click="toRoomDetail(item.id)">
+								<view class="demo-title">
+									{{item.building[0]+item.building[2]+item.dormitoryno}}
+								</view>
+								<view class="demo-price">
+									已组{{item.count}}/4人
+								</view>
+								<view class="demo-shop">
+									{{item.building}}
+								</view>
 							</view>
-							<view class="demo-shop">
-								{{item.building}}
-							</view>
-						</view>
-					</template>
-					<template v-slot:right="{rightList}">
-						<view class="demo-warter" v-for="(item, index) in rightList" :key="index" @click="toRoomDetail(item.id)">
-							<view class="demo-title">
-								{{item.building[0]+item.building[2]+item.dormitoryno}}
-							</view>
-							<view class="demo-price">
-								已组{{item.count}}/4人
-							</view>
-							<view class="demo-shop">
-								{{item.building}}
-							</view>
-						</view>
-					</template>
-				</u-waterfall>
+						</template>
+					</u-waterfall>
+				</view>
+
+				<view class="btn">
+					<u-button @click="toTable() ">填表</u-button>
+				</view>
+
+				<u-loadmore bg-color="rgb(240, 240, 240)" :status="loadStatus" @loadmore="addRandomData"></u-loadmore>
 			</view>
-		
-			<view class="btn">
-				<u-button @click="toTable()">填表</u-button>
-			</view>
-		
-			<u-loadmore bg-color="rgb(240, 240, 240)" :status="loadStatus" @loadmore="addRandomData"></u-loadmore>
 		</view>
 	</view>
 </template>
@@ -55,93 +70,96 @@
 	export default {
 		data() {
 			return {
-				isShow:0,
+				isShow: 0,
 				loadStatus: 'nomore',
 				flowList: [],
-				list: [
-					{
-						building:'竹园四栋',
-						count:0,
-						dormitoryno:'竹四201',
-						id:1
+				list: [{
+						building: '竹园四栋',
+						count: 0,
+						dormitoryno: '竹四201',
+						id: 1
 					},
 					{
-						building:'竹园四栋',
-						count:1,
-						dormitoryno:'竹四202',
-						id:2
+						building: '竹园四栋',
+						count: 1,
+						dormitoryno: '竹四202',
+						id: 2
 					},
 					{
-						building:'竹园四栋',
-						count:2,
-						dormitoryno:'竹四203',
-						id:3
+						building: '竹园四栋',
+						count: 2,
+						dormitoryno: '竹四203',
+						id: 3
 					},
 					{
-						building:'竹园四栋',
-						count:3,
-						dormitoryno:'竹四204',
-						id:4
+						building: '竹园四栋',
+						count: 3,
+						dormitoryno: '竹四204',
+						id: 4
 					},
 					{
-						building:'竹园四栋',
-						count:4,
-						dormitoryno:'竹四205',
-						id:5
+						building: '竹园四栋',
+						count: 4,
+						dormitoryno: '竹四205',
+						id: 5
 					},
 					{
-						building:'竹园四栋',
-						count:0,
-						dormitoryno:'竹四206',
-						id:6
+						building: '竹园四栋',
+						count: 0,
+						dormitoryno: '竹四206',
+						id: 6
 					},
 					{
-						building:'竹园四栋',
-						count:1,
-						dormitoryno:'竹四207',
-						id:7
+						building: '竹园四栋',
+						count: 1,
+						dormitoryno: '竹四207',
+						id: 7
 					},
 					{
-						building:'竹园四栋',
-						count:2,
-						dormitoryno:'竹四208',
-						id:8
+						building: '竹园四栋',
+						count: 2,
+						dormitoryno: '竹四208',
+						id: 8
 					},
 					{
-						building:'竹园四栋',
-						count:3,
-						dormitoryno:'竹四209',
-						id:9
+						building: '竹园四栋',
+						count: 3,
+						dormitoryno: '竹四209',
+						id: 9
 					},
 					{
-						building:'竹园四栋',
-						count:4,
-						dormitoryno:'竹四210',
-						id:10
+						building: '竹园四栋',
+						count: 4,
+						dormitoryno: '竹四210',
+						id: 10
 					}
 				]
 			}
 		},
-		onLoad() { 
+		onLoad() {
 			//在页面加载的时候就会执行这个函数
 			//发送请求去查询电影列表数据
 			//uni.request({}) 这个属于是uniapp中的请求方式
 			//使用uview中的请求方式请求数据
 			this.$u.get('/api/dormitory/user').then(res => { //请求成功执行的函数
-				console.log("res:",res);
+				console.log("res:", res);
 				if (res.code == 200) {
-					this.isShow=1
-					this.list=res.data
+					this.isShow = 1
+					this.list = res.data
 					this.addRandomData();
-					console.log("list:",this.list)
-				}
-				else if(res.code==214){
-					this.isShow=0
+					console.log("list:", this.list)
+				} else if (res.code == 214) {
+					this.isShow = 0
+					console.log("登陆状态: ", res.data)
 				}
 			}).catch(err => { //请求失败执行的函数
 				console.log(err)
 			})
+
 		},
+		// onUnload(){
+		// 	this.$mp.page.options.disableCache=true
+		// },
 		methods: {
 			toTable: function() { //跳转到宿舍需求的页面
 				uni.navigateTo({
@@ -150,13 +168,13 @@
 			},
 			toRoomDetail: function(id) { //跳转到宿舍需求的页面
 				uni.navigateTo({
-					url: '/pages/roomdetail/roomdetail?dormitoryId='+id,
+					url: '/pages/roomdetail/roomdetail?dormitoryId=' + id,
 				})
 				// console.log("firstid:",id)
 			},
-			toMyroom: function(){
+			toMyroom: function() {
 				uni.navigateTo({
-					url:'/pages/myroom/myroom'
+					url: '/pages/myroom/myroom'
 				})
 			},
 			addRandomData() {
@@ -174,6 +192,11 @@
 			// remove(id) {
 			// 	this.$refs.uWaterfall.remove(id);
 			// },
+			goback() {
+				uni.switchTab({
+					url: '/pages/index/index'
+				})
+			}
 		}
 	}
 </script>
@@ -207,7 +230,7 @@
 		/* 按钮背景颜色 */
 		border-radius: 50%;
 		/* 使按钮呈圆形 */
-		color: #fff;
+		color: #0055ff;
 		/* 文字颜色 */
 		text-align: center;
 		line-height: 60px;
@@ -215,24 +238,26 @@
 		cursor: pointer;
 		/* 可以添加其他样式属性，如阴影等 */
 	}
+
 	.demo-tag {
-			// display: flex;
-			margin-top: 5px;
-		}
-		
+		// display: flex;
+		margin-top: 5px;
+	}
+
 	.demo-tag-text {
-			border: 1px solid $u-type-primary;
-			color: $u-type-primary;
-			margin-left: 10px;
-			border-radius: 50rpx;
-			line-height: 1;
-			width: 50%;
-			padding: 4rpx 14rpx;
-			// display: flex;
-			align-items: center;
-			border-radius: 50rpx;
-			font-size: 20rpx;
-		}
+		border: 1px solid $u-type-primary;
+		color: $u-type-primary;
+		margin-left: 10px;
+		border-radius: 50rpx;
+		line-height: 1;
+		width: 50%;
+		padding: 4rpx 14rpx;
+		// display: flex;
+		align-items: center;
+		border-radius: 50rpx;
+		font-size: 20rpx;
+	}
+
 	.demo-warter {
 		border-radius: 8px;
 		margin: 5px;
@@ -256,7 +281,7 @@
 
 	.demo-price {
 		font-size: 30rpx;
-		color: $u-type-error;
+		color: #00aaff;
 		margin-top: 5px;
 	}
 

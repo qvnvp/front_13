@@ -61,6 +61,7 @@
 <script>
 	import BottomBar from '@/components/BottomBar.vue';
 
+
 	export default {
 		data() {
 			return {
@@ -71,42 +72,19 @@
 				count: null,
 				sex: null,
 
-				list: [{
-						name: '蒋凡江',
-						phone: '12345678998',
-						qq: '1234567898',
-						content: '一般11点前入睡，中午会午休-爱整洁，学习时需要安静的环境-不吸烟-dsfsefdfefefewfwfwfwfewfwefewfdfsfwfefwfweffwwfwefewfwfwfwfewfewfwefwefewfwefwefewf',
-					},
-					{
-						name: '蒋凡江',
-						phone: '12345678998',
-						qq: '1234567898',
-						content: '一般11点前入睡，中午会午休-爱整洁，学习时需要安静的环境-不吸烟-dsfsefdf',
-					},
-					{
-						name: '蒋凡江',
-						phone: '12345678998',
-						qq: '1234567898',
-						content: '一般11点前入睡，中午会午休-爱整洁，学习时需要安静的环境-不吸烟-dsfsefdfefefewfwfwfwfewfwefewfdfsfwfefwfweffwwfwefewfwfwfwfewfewfwefwefewfwefwefewf',
-					},
-					{
-						name: '蒋凡江',
-						phone: '12345678998',
-						qq: '1234567898',
-						content: '一般11点前入睡，中午会午休-爱整洁，学习时需要安静的环境-不吸烟-dsfsefdfefefewfwfwfwfewfwefewfdfsfwfefwfweffwwfwefewfwfwfwfewfewfwefwefewfwefwefewf',
-					}
-				]
+				list: []
 			}
 		},
 		// components: {
 		// 	BottomBar
 		// },
-		methods: {
+		methods: {		
 			showToast() {
 				this.$refs.uToast.show({
 					title: '加入成功',
 					type: 'default',
 					url: '/pages/room/room'
+					// back: true
 				})
 			},
 			join: function() {
@@ -334,7 +312,7 @@
 		height: 100rpx;
 		line-height: 100rpx;
 		border-radius: 20rpx 20rpx 0 0;
-		background-color: #ffaa00;
+		background-color: #55aaff;
 	}
 
 	.bottom-text {

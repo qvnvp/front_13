@@ -1,5 +1,6 @@
 <template>
 	<view style="padding: 15px;">
+		<u-toast ref="uToast" />
 		<u-form ref="validateFormRef" :model="user" :label-width="150">
 			<u-form-item label="姓名" prop="name" required>
 				<u-input v-model="user.name" placeholder="请输入姓名" />
@@ -23,7 +24,7 @@
 				<u-input type="textarea" v-model="user.other" placeholder="填写其他需求" />
 			</u-form-item>
 		</u-form>
-		<u-button type="error" @click="submit()">提交</u-button>
+		<u-button :disabled="isUnchanged" type="error" @click="submit()">提交</u-button>
 	</view>
 </template>
 
@@ -31,7 +32,6 @@
 	export default {
 		data() {
 			return {
-				
 				rules: {
 					name: [{
 						required: true,
@@ -84,12 +84,64 @@
 					qq:'',
 					content:''	
 				},
+				defaultzuoxi:'',
+				defaultxiguan:'',
+				defaultxiyan:'',
+				defaultother:'',
+				defaultname:'',
+				defaultphone:'',
+				defaultqq:'',
+			}
+		},
+		computed:{
+			isUnchanged(){
+				return(
+					this.user.zuoxi===this.defaultzuoxi &&
+					this.user.xiguan===this.defaultxiguan &&
+					this.user.xiyan===this.defaultxiyan &&
+					this.user.other===this.defaultother &&
+					this.user.name===this.defaultname &&
+					this.user.phone===this.defaultphone &&
+					this.user.qq===this.defaultqq
+				);
 			}
 		},
 		onReady() {
 			this.$refs.validateFormRef.setRules(this.rules);
 		},
+		onLoad() { 
+			this.$u.get('/api/v1/dormi_require/user').then(res => { //请求成功执行的函数
+				console.log("loadres:",res);
+				if (res.code == 200) {
+					this.user.zuoxi=res.data.content.split('-')[0]
+					this.user.xiguan=res.data.content.split('-')[1]
+					this.user.xiyan=res.data.content.split('-')[2]
+					this.user.other=res.data.content.split('-')[3]
+					this.user.name=res.data.name
+					this.user.phone=res.data.phone
+					this.user.qq=res.data.qq
+					this.defaultzuoxi=res.data.content.split('-')[0]
+					this.defaultxiguan=res.data.content.split('-')[1]
+					this.defaultxiyan=res.data.content.split('-')[2]
+					this.defaultother=res.data.content.split('-')[3]
+					this.defaultname=res.data.name
+					this.defaultphone=res.data.phone
+					this.defaultqq=res.data.qq
+				}
+				// console.log("comalist:",this.comalist)
+			}).catch(err => { //请求失败执行的函数
+				console.log(err)
+			})
+		},
 		methods: {
+			showToast() {
+				this.$refs.uToast.show({
+					title: '修改成功',
+					type: 'default',
+					url: '/pages/room/room'
+					// back: true
+				})
+			},
 			submit: function() {
 				//1.验证表单是否都通过了验证
 				this.$refs.validateFormRef.validate(valid => {
@@ -109,10 +161,7 @@
 							success: (res) => {
 								//3.注册成功跳转到登录页面
 								if (res.data.code == 200) {
-									uni.navigateTo({ //返回上一页面
-										url: '/pages/roomtable/roomtable'
-									})
-									this.$u.toast('请下拉页面刷新')
+									this.showToast()
 								}
 
 							},
@@ -125,39 +174,7 @@
 					// 	console.log('验证失败');
 					// }
 				});
-
-			},
-
-			onLoad() { //在页面加载的时候就会执行这个函数
-				//发送请求去查询电影列表数据
-				// uni.request({}) 这个属于是uniapp中的请求方式
-				// 使用uview中的请求方式请求数据
-				// this.$u.get('/api/college/CollegesWithMajors').then(res => { //请求成功执行的函数
-				// 	console.log("res:",res);
-				// 	if (res.code == 200) {
-				// 		this.comalist=res.data
-				// 	}
-				// 	// console.log("comalist:",this.comalist)
-				// }).catch(err => { //请求失败执行的函数
-				// 	console.log(err)
-				// })
-
-				this.$u.get('/api/v1/dormi_require/user').then(res => { //请求成功执行的函数
-					console.log("loadres:",res);
-					if (res.code == 200) {
-						this.user.zuoxi=res.data.content.split('-')[0]
-						this.user.xiguan=res.data.content.split('-')[1]
-						this.user.xiyan=res.data.content.split('-')[2]
-						this.user.other=res.data.content.split('-')[3]
-						this.user.name=res.data.name
-						this.user.phone=res.data.phone
-						this.user.qq=res.data.qq
-					}
-					// console.log("comalist:",this.comalist)
-				}).catch(err => { //请求失败执行的函数
-					console.log(err)
-				})
-			},
+			}
 		}
 	}
 </script>

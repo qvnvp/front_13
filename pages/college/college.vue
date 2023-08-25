@@ -1,21 +1,21 @@
 <template>
 	<view class="u-wrap">
 		<!-- 搜索模块2.0再加 -->
-		<!-- <view
-			style="margin: 20rpx; padding-left: 10rpx; height: 50rpx; background-color: #f2f2f2; border-radius: 10rpx;">
-			<input placeholder="请输入你想搜索的学院" :animation="true" v-model="searchInput" @input="handleInputChange"></input>
+		<view
+			style="margin: 15rpx; padding-left: 10rpx; height: 50rpx; background-color: #f2f2f2; border-radius: 10rpx;">
+			<input placeholder="请输入你想搜索的学院" :animation="true" v-model="searchInput" @input="handleInputChange"
+				@keydown.arrow-down="handleArrowDown" @keydown.arrow-up="handleArrowUp"
+				@keydown.enter="handleEnter"></input>
 		</view>
-		<view>
-			<view class="dropdown-list">
-				<view v-show="showDropdown">
-					<view v-for="(result, index) in searchResults" :key="result" @click="selectResult(result)">
-						{{ result }}
-					</view>
-				</view>
+		<view
+			style="margin: 10rpx 30rpx; width: 80%; background-color: #f2f2f2; border-radius: 10rpx; position: fixed; top: 80px; z-index: 999;"
+			v-show="showDropdown">
+			<view v-for="(result, index) in searchResults" :key="result" @click="selectResult(result, index)"
+				style="padding: 5px;" :class="{ active: index === activeIndex }" v-if="index < 10">
+				{{ result }}
 			</view>
-		</view> 
-		<view style="margin: 10rpx 30rpx; height: 200rpx; width: 80%; border: 1px solid red; background-color: #f2f2f2; border-radius: 10rpx"></view> -->
-		<view class="u-menu-wrap"> 
+		</view>
+		<view class="u-menu-wrap">
 			<scroll-view scroll-y scroll-with-animation class="u-tab-view menu-scroll-view" :scroll-top="scrollTop">
 				<view v-for="(item,index) in tabbar" :key="index" class="u-tab-item"
 					:class="[current==index ? 'u-tab-item-active' : '']" :data-current="index"
@@ -47,6 +47,8 @@
 
 <script>
 	import classifyData from "@/common/classify.data.js";
+	import collegeData from "@/common/college.data.js";
+	import mapData from "@/common/map.data.js";
 	import Fuse from 'fuse.js';
 
 	export default {
@@ -57,19 +59,12 @@
 				current: 0, // 预设当前项的值
 				menuHeight: 0, // 左边菜单的高度
 				menuItemHeight: 0, // 左边菜单item的高度
-
 				searchInput: '',
-				data: [{
-						name: "计算机学院",
-						pinyin: "jisuanjixueyuan"
-					},
-					{
-						name: "土木学院",
-						pinyin: "tumuxueyuan"
-					},
-				],
+				data: collegeData,
 				searchResults: [],
 				showDropdown: false,
+				mapindex: mapData,
+				activeIndex: -1
 			}
 		},
 		computed: {
@@ -112,20 +107,40 @@
 			handleInputChange() {
 				if (this.searchInput) {
 					const fuse = new Fuse(this.data, {
-						keys: ['name', 'pinyin']
+						keys: ['name', 'pinyin'],
+						threshold: 0.8,
+						matchAllTokens: true
 					}); // 替换为你的数据字段名
 					this.searchResults = fuse.search(this.searchInput).map(result => result.item.name);
 					this.showDropdown = true;
 				} else {
 					this.searchResults = [];
 					this.showDropdown = false;
+					this.activeIndex = -1;
+				}
+			},
+			handleArrowDown() {
+				if (this.activeIndex < this.searchResults.length - 1) {
+					this.activeIndex++;
+				}
+			},
+			handleArrowUp() {
+				if (this.activeIndex > 0) {
+					this.activeIndex--;
+				}
+			},
+			handleEnter() {
+				if (this.activeIndex !== -1) {
+					this.selectResult(this.searchResults[this.activeIndex]);
 				}
 			},
 			selectResult(result, index) {
-				this.searchInput = result;
+				this.searchInput = '';
 				this.showDropdown = false;
-				console.log(result, index)
-				this.swichMenu(index);
+				this.activeIndex = -1
+				// console.log(result, index)
+				// console.log("index", this.mapindex[result])
+				this.swichMenu(this.mapindex[result]);
 			}
 		}
 	}
@@ -257,5 +272,9 @@
 		margin-left: 40rpx;
 		z-index: 9999;
 		/* 其他样式属性 */
+	}
+	
+	.active {
+		background-color: #8c8c8c;
 	}
 </style>

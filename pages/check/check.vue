@@ -25,38 +25,54 @@
 								请按流程顺序进行报道，如您已完成一项，请点击底部“我已完成”进行确认！
 							</view>
 							<!-- <u-steps :list="numList" :current="currentstep" mode="number" direction="column"></u-steps> -->
-							 <u-steps :list="numList" :current="currentstep" mode="number" direction="column">
-							        <template #default="{ step }">
-							            <u-icon :type="getStepIconType(step)">{{ step }}</u-icon>
-							        </template>
-							    </u-steps>
-							<text>{{"\n\n1\n\n"}}</text>
+							<u-steps :list="numList" :current="currentstep" mode="number" direction="column">
+								<!-- <template #default="{ step }">
+									<u-icon :type="getStepIconType(step)">{{ step }}</u-icon>
+								</template> -->
+							</u-steps>
+							<view class="notice1" v-if="this.currentstep!=7">
+								<!-- {{text3[this.currentstep+1].tx}} -->
+								<text>{{text3[this.currentstep+1].tx}}</text>
+							</view>
+							<!-- <text>{{text3[this.currentstep+1].tx}}</text> -->
 						</view>
 						<!-- <view class="item-btn">
 							<u-button type="primary" @click="submit()"> {{"我已完成"}}</u-button>
 						</view> -->
 						<view class="item-btn">
-						        <u-button type="primary" @click="submit()" class="report-btn">{{ isReported ? '已完成报道' : '我已完成该步骤' }}</u-button>
-						    </view>
+							<u-button type="primary" @click="submit()" class="report-btn"
+								:disabled="isReported">{{ this.currentstep==6 || this.currentstep==7 ? '已完成报到' : '我已完成该步骤' }}</u-button>
+						</view>
 					</view>
 				</view>
 				<view class="page-view" v-if="current === 2">
 					<view class="class-item">
 						<view class="item-content">
-							这是学校地图
+							<view class="image-container">
+								<u-image width="100%" @click='previewImage1()' border-radius="5" height="300rpx"
+									mode="aspectFill" :src="src1"></u-image>
+								<u-image width="100%" @click='previewImage2()' border-radius="5" height="400rpx"
+									mode="aspectFit" :src="src3"></u-image>
+								<u-image width="100%" @click='previewImage3()' border-radius="5" height="400rpx"
+									mode="aspectFit" :src="src2"></u-image>
+								<u-image width="100%" @click='previewImage4()' border-radius="5" height="400rpx"
+									mode="aspectFit" :src="src4"></u-image>
+							</view>
 						</view>
 					</view>
 				</view>
 				<view class="page-view" v-if="current === 3">
 					<view class="class-item">
 						<view class="item-content">
-							<view class="content1" style="background-color: #50abff;color: white; margin-left: 150rpx;margin-right: 215rpx;">
+							<view class="content1"
+								style="background-color: #50abff;color: white; margin-left: 150rpx;margin-right: 215rpx;">
 								到校交通
-								</view>
-							<view class ="content2">
+							</view>
+							<view class="content2">
 								<text>{{ text2 }}</text>
 							</view>
-							<view class="content2" style="background-color: #50abff;color: white;margin-left: 150rpx;margin-right: 215rpx;">
+							<view class="content2"
+								style="background-color: #50abff;color: white;margin-left: 150rpx;margin-right: 215rpx;">
 								校内交通
 							</view>
 							<u-image width="100%" border-radius="5" height="750rpx" mode="aspectFill"
@@ -79,15 +95,16 @@
 		data() {
 			return {
 				// tabbar: classifyData,
-				isReported: false, // 初始化为未报道状态
+				// isReported: false, // 初始化为未报道状态
 				scrollTop: 0, //tab标题的滚动条位置
 				current: 0, // 预设当前项的值
 				menuHeight: 0, // 左边菜单的高度
 				menuItemHeight: 0, // 左边菜单item的高度
 				currentstep: -1,
-				// user:{
-				// 	
-				// }
+				src1: 'https://ts1.cn.mm.bing.net/th/id/R-C.43f1a738c7ae6acdb7f86b1f029ca6cc?rik=qOqJV6liD2UJWg&riu=http%3a%2f%2fstudy.cqu.edu.cn%2f__local%2f4%2f3F%2f1A%2f738C7AE6ACDB7F86B1F029CA6CC_8200587B_D9971.png%3fe%3d.png&ehk=BuVmypWyT%2bpHHxtku%2f5%2fIX8xy9Pte2xYXvG6BiEb6DE%3d&risl=&pid=ImgRaw&r=0',
+				src2: 'https://ts1.cn.mm.bing.net/th/id/R-C.ba282f46ead8d1d8c400d918e347386e?rik=m4PsGKw%2bDnkZnA&riu=http%3a%2f%2fstudy.cqu.edu.cn%2f__local%2fB%2fA2%2f82%2fF46EAD8D1D8C400D918E347386E_74A6D3A9_1201AB.png%3fe%3d.png&ehk=Al1hg%2f8QYWqRLqYf2B55KoaMCEvmLLxZxGZ%2fO4WY49s%3d&risl=&pid=ImgRaw&r=0',
+				src3: 'https://ts1.cn.mm.bing.net/th/id/R-C.34745f4579e5bf0cc4e1e1ed52f4e4c8?rik=cON1DK8ITSo9hA&riu=http%3a%2f%2fstudy.cqu.edu.cn%2f__local%2f3%2f47%2f45%2fF4579E5BF0CC4E1E1ED52F4E4C8_5C951120_16AAD5.png%3fe%3d.png&ehk=VjLzQwpHRUh1CXshR5fzHPo2cYs%2f31n0zTW6hu%2bm0LE%3d&risl=&pid=ImgRaw&r=0',
+				src4: 'https://ts1.cn.mm.bing.net/th/id/R-C.4c5e6368b52ac6cd29268236e151ac39?rik=0ELRV25aFet%2fgA&riu=http%3a%2f%2fstudy.cqu.edu.cn%2f__local%2f4%2fC5%2fE6%2f368B52AC6CD29268236E151AC39_3FDAC627_E820D.png%3fe%3d.png&ehk=G%2beKd0DRAuME3p8QRbhW1A8jTNadkVMnjUyAz4CWgsI%3d&risl=&pid=ImgRaw&r=0',
 				numList: [{
 					name: '学院报到'
 				}, {
@@ -99,7 +116,7 @@
 				}, {
 					name: '档案馆'
 				}, {
-					name: '户口办理'
+					name: '医院体检'
 				}, {
 					name: '军训服装领取'
 				}, ],
@@ -166,9 +183,9 @@
 					收纳盒：对男生宿舍的印象大多是脏、乱、差，所以一个方便的收纳盒还是很有必要的。平时的一些琐碎的东西都可以整理进去，方便卫生。\n\
 					电子产品：手机、耳机、充电器三大标配就不用说了。外地学生可以带一个充电宝，以防止手机路上没电。\n\
 					另外就是电脑，在网络发达的今天，如果家里有条件，带一台电脑也是很不错的，因为大学很多课程以及社交都是需要电脑的",
-					
-					
-					text2: "轻轨：\n\n\
+
+
+				text2: "轻轨：\n\n\
 					1.江北机场：\n\
 					乘10号线→环线重庆大学（到达重庆大学A、B区）3号线江北机场→两路口换乘→1号线大学城（到达重庆大学虎溪校区）\n\n\
 					2.重庆北站南广场\n\
@@ -181,43 +198,138 @@
 					1.江北机场专线03号线→杨公桥换乘181路公交车→沙杨路（重庆大学B区后门）→沙中路（重庆大学A区后门）\n\n\
 					2.重庆北站北广场东侧乘坐217路公交车→沙中路（重庆大学A区后门）→沙杨路（重庆大学B区后门）\n\n\
 					3.重庆北站南广场出站通道到达821路公交车站→沙中路（重庆大学A区后门）→沙杨路（重庆大学B区后门）\n",
-					
+
+				text3:[
+					{
+						tx:"学院报到：\n\
+						1.凭录取语知书、身份证核实身份\n\
+						2提交一寸、二寸照片若干张。\n\
+						3.领取校园一卡通。\n\
+						4.领取入学报到指引单。"
+					},
+					{
+						tx:"住宿办理：\n\
+						新生凭身份证和录取通知书或校园卡到入住楼栋办理入住手续。"
+					},
+					{
+						tx:"财务办理：\n\
+						1.已在重庆大学网上缴费平台完成学杂费缴纳的新生，报到流程单“财务”一栏由学院迎新点工作人员代签。\n\
+						2.未完成网上缴费的新生须到财务迎新现场办理手续。"
+					},
+					{
+						tx:"学生资助：\n\
+						1.绿色通道(校园地贷款)\n\
+						(1）到迎新现场找学院办理“绿色通道”申请、审批手续;\n\
+						(2）将材料交送至迎新现场资助中心审核签字盖章;\n\
+						(3）自助缴纳或到财务迎新现场缴剩余费用;\n\
+						(4)将绿色通道审批表交回学院。(开学后持学生证到贷款中心办理校园地贷款)\n\
+						2。生源地贷款\n\
+						(1）持生源地贷款受理证明到迎新现场找资助中心确认;\n\
+						(2）自助缴纳或到财务迎新现场缴清扣除生源地贷款之后的剩余金额。"
+					},
+					{
+						tx:"档案馆：\n\
+						自带档案的新生到迎新“档案办理点”交档案并登记。\n\
+						其余的新生在学校迎新系统上进行自助办理手续。"
+					},
+					{
+						tx:"医院体检：\n\
+						网上完成缴费，凭新生校园一卡通自行到A/B/虎溪校区校医院通过读卡器识别、打印体检表，参加体检。"
+					},
+					{
+						tx:"军训服装领取：\n\
+						虎溪校区的新生持校园一卡通自行到梅园二栋(女)、梅园三栋(男）排队刷卡，领取服装并缴纳军训被服等费用;\n\
+						A/B校区的新生届时到指定地点办理领取。"
+					},
+					{
+						tx:"您已完成所有步骤，请确认报到成功。"
+					},
+				]
+
+			}
+		},
+		onLoad() {
+			uni.request({
+				url: '/api/student', //仅为示例，并非真实接口地址。
+				method: 'GET',
+				data: null,
+				timeout: 5000,
+				success: (res) => {
+					//3.注册成功跳转到登录页面
+					if (res.data.code == 200) {
+						this.currentstep = res.data.data.reportedStatus
+						console.log('res:', res.data)
+						console.log('currentstep:', this.currentstep)
 					}
+				},
+				fail: (err) => {
+					console.log(err)
+				}
+			});
 		},
 		computed: {
-
+			isReported() {
+				return (
+					this.currentstep == 7
+				);
+			}
 		},
 		methods: {
+			previewImage1: function() {
+				uni.previewImage({
+					urls: [this.src1]
+				})
+			},
+			previewImage2: function() {
+				uni.previewImage({
+					urls: [this.src3]
+				})
+			},
+			previewImage3: function() {
+				uni.previewImage({
+					urls: [this.src2]
+				})
+			},
+			previewImage4: function() {
+				uni.previewImage({
+					urls: [this.src4]
+				})
+			},
+
 			submit: function() {
 				if (this.currentstep != 6) {
 					this.currentstep += 1;
+					console.log("currentstep:", this.currentstep)
+					// this.reportedStatus = this.currentstep;
+					uni.request({
+						url: '/api/student/reported_status/' + this.currentstep, //仅为示例，并非真实接口地址。
+						method: 'PUT',
+						// data: this.currentstep, // 更新为已报道状态
+						timeout: 5000,
+					});
 					uni.showToast({
-					    title: '请进行下一步',
-					    icon: 'none',
-					    duration: 3000
-					
-						})
-				} 
-				else {
-					 // 更新isReported状态
-					    this.isReported = true;
-						  
-				uni.request({
-					url: 'http://nsrs.autumnclouds.cn/api/student', //仅为示例，并非真实接口地址。
-					method: 'PUT',
-					 data: {
-					                reportedStatus: 1, // 更新为已报道状态
-					            },
-					timeout: 5000,
-				});
-				uni.showToast({
-				    title: '您已报道成功！',
-				    icon: 'none',
-				    duration: 2000
-				
+						title: '请进行下一步',
+						icon: 'none',
+						duration: 2000
+					})
+				} else {
+					// 更新isReported状态
+					this.currentstep += 1;
+					// this.isReported = true;
+					console.log("currentstep:", this.currentstep)
+					uni.request({
+						url: '/api/student/reported_status/' + this.currentstep, //仅为示例，并非真实接口地址。
+						method: 'PUT',
+						// data: this.currentstep, // 更新为已报道状态
+						timeout: 5000,
+					});
+					uni.showToast({
+						title: '您已报道成功！',
+						icon: 'none',
+						duration: 2000
 					})
 				}
-				
+
 			},
 			getImg() {
 				return Math.floor(Math.random() * 35);
@@ -257,24 +369,42 @@
 </script>
 
 <style lang="scss" scoped>
-	// .u-wrap {
-	// 	height: calc(100vh);
-	// 	/* #ifdef H5 */
-	// 	height: calc(100vh - var(--window-top));
-	// 	/* #endif */
-	// 	display: flex;
-	// 	flex-direction: column;
-	// }
-.notice {
-  border-radius: 8px; /* 增加圆角 */
-  background-color: #4ba2ff;
-  color: white; /* 调整文字颜色 */
-  padding: 12px 16px; /* 调整内边距 */
-  font-size: 14px; /* 调整文字大小 */
-  line-height: 1.5; /* 调整行高，使文字更易读 */
-  margin-bottom: 20px; /* 调整通知与其他内容的间距 */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
-}
+	.notice {
+		border-radius: 8px;
+		/* 增加圆角 */
+		background-color: #4ba2ff;
+		color: white;
+		/* 调整文字颜色 */
+		padding: 12px 16px;
+		/* 调整内边距 */
+		font-size: 14px;
+		/* 调整文字大小 */
+		line-height: 1.5;
+		/* 调整行高，使文字更易读 */
+		margin-bottom: 20px;
+		/* 调整通知与其他内容的间距 */
+		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+		/* 添加阴影效果 */
+	}
+	
+	.notice1 {
+		border-radius: 8px;
+		/* 增加圆角 */
+		background-color: #55aaff;
+		color: white;
+		/* 调整文字颜色 */
+		padding: 12px 16px;
+		/* 调整内边距 */
+		font-size: 14px;
+		/* 调整文字大小 */
+		line-height: 1.5;
+		/* 调整行高，使文字更易读 */
+		margin-bottom: 50px;
+		/* 调整通知与其他内容的间距 */
+		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+		/* 添加阴影效果 */
+	}
+
 	.u-menu-wrap {
 		flex: 1;
 		display: flex;
@@ -329,65 +459,131 @@
 		background-color: #fff;
 		padding: 16rpx;
 		border-radius: 8rpx;
+		position: relative;
+		// border: 1rpx solid red;
+		/* 使页面内容相对定位，以便按钮位置相对于页面 */
+	}
+	
+	.item-btn {
+		position: fixed;
+		/* 使用固定定位 */
+		bottom: 20px;
+		left: 45%;
+		/* 距离底部的距离 */
+		// right: 20px;
+		/* 距离右侧的距离 */
+		// width: 60px;
+		/* 按钮宽度 */
+		height: 60px;
+		/* 按钮高度 */
+		// background-color: #007bff;
+		/* 按钮背景颜色 */
+		border-radius: 50%;
+		/* 使按钮呈圆形 */
+		color: #0055ff;
+		/* 文字颜色 */
+		text-align: center;
+		line-height: 60px;
+		/* 文字垂直居中 */
+		cursor: pointer;
+		/* 可以添加其他样式属性，如阴影等 */
+	}
+	
+
+	// .class-item {}
+
+	.u-wrap {
+		/* ...其他样式... */
+		background-color: #f4f4f4;
+		/* 更改页面背景颜色 */
+		font-family: Arial, sans-serif;
+		/* 更改字体 */
 	}
 
-	.class-item {}
-	
-	.u-wrap {
-	    /* ...其他样式... */
-	    background-color: #f4f4f4; /* 更改页面背景颜色 */
-	    font-family: Arial, sans-serif; /* 更改字体 */
-	}
-	
 	.page-view {
-	    /* ...其他样式... */
-	    background-color: #ffffff; /* 更改内容区域背景颜色 */
-	    border-radius: 10px; /* 添加圆角边框 */
-	    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
-	    padding: 20px; /* 增加内边距 */
+		/* ...其他样式... */
+		background-color: #ffffff;
+		/* 更改内容区域背景颜色 */
+		border-radius: 10px;
+		/* 添加圆角边框 */
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		/* 添加阴影效果 */
+		padding: 20px;
+		/* 增加内边距 */
 	}
-	
+
 	.u-steps {
-	    /* ...其他样式... */
-	    margin-top: 20px; /* 增加步骤条与其他内容的间距 */
+		/* ...其他样式... */
+		margin-top: 20px;
+		/* 增加步骤条与其他内容的间距 */
 	}
+
 	.report-btn {
-	    background-color: #107cff; /* 修改按钮背景颜色 */
-	    color: #ffffff; /* 修改按钮文本颜色 */
-	    border: none; /* 去掉按钮边框 */
-	    font-weight: bold; /* 加粗按钮文本 */
-	    border-radius: 8px; /* 圆角边框 */
-	    padding: 10px 20px; /* 调整内边距 */
-	    font-size: 16px; /* 调整字体大小 */
-	    cursor: pointer; /* 鼠标指针样式为手型 */
-	    transition: background-color 0.3s ease; /* 添加过渡效果 */
+		background-color: #107cff;
+		/* 修改按钮背景颜色 */
+		color: #ffffff;
+		/* 修改按钮文本颜色 */
+		border: none;
+		/* 去掉按钮边框 */
+		font-weight: bold;
+		/* 加粗按钮文本 */
+		border-radius: 8px;
+		/* 圆角边框 */
+		padding: 10px 20px;
+		/* 调整内边距 */
+		font-size: 16px;
+		/* 调整字体大小 */
+		cursor: pointer;
+		/* 鼠标指针样式为手型 */
+		transition: background-color 0.3s ease;
+		/* 添加过渡效果 */
 	}
-	
+
 	.report-btn:hover {
-	    background-color: #0841ff; /* 鼠标悬停时按钮背景颜色变化 */
+		background-color: #0841ff;
+		/* 鼠标悬停时按钮背景颜色变化 */
 	}
+
 	.u-steps .u-icon {
-	    font-size: 20px; /* 调整图标大小 */
-	    line-height: 20px; /* 调整图标行高 */
-	    color: #ccc; /* 默认图标颜色 */
+		font-size: 20px;
+		/* 调整图标大小 */
+		line-height: 20px;
+		/* 调整图标行高 */
+		color: #ccc;
+		/* 默认图标颜色 */
 	}
-	
+
 	.u-steps .u-icon.success {
-	    color: #65a0ff; /* 已完成图标颜色 */
+		color: #65a0ff;
+		/* 已完成图标颜色 */
 	}
-	
+
 	.u-steps {
-	  margin-top: 20px; /* 调整步骤条与其他内容的间距 */
+		margin-top: 20px;
+		/* 调整步骤条与其他内容的间距 */
 	}
-	
+
 	.step-icon {
-	  font-size: 24px; /* 调整图标大小 */
-	  line-height: 24px; /* 调整图标行高 */
-	  color: #ccc; /* 默认图标颜色 */
-	  margin-right: 6px; /* 调整图标与文字之间的间距 */
+		font-size: 24px;
+		/* 调整图标大小 */
+		line-height: 24px;
+		/* 调整图标行高 */
+		color: #ccc;
+		/* 默认图标颜色 */
+		margin-right: 6px;
+		/* 调整图标与文字之间的间距 */
 	}
-	
+
 	.step-icon.success {
-	  color: #016fff; /* 已完成图标颜色 */
+		color: #016fff;
+		/* 已完成图标颜色 */
+	}
+</style>
+
+<style>
+	/* page不能写带scope的style标签中，否则无效 */
+	page {
+		/* border:1rpx solid red; */
+		background-color: rgb(244, 244, 244);
 	}
 </style>

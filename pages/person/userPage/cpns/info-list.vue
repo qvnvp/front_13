@@ -6,16 +6,22 @@
 			<!-- 头像 -->
 			<view class="flex flex-row justify-center items-center">
 				<image class="img-header mr-10" :src="info.authorAvatar" mode="widthFix" lazy-load
-					@click.stop="$u.route('/pages/mine/user-space')"></image>
-				<view class="flex justify-center items-center text-gray-500 text-30">{{item.authorName}}
-					<view class="iconfont iconxingbie-nan tag-age"
-						:class="[user.sex == 0 ? 'iconxingbie-nan' :(user.sex === 1 ? 'iconxingbie-nv' : '')]">
-						<!-- <text class="ml-10">{{user.age}}</text> -->
-					</view>
+					@click="gotoauthor(info.authorId)()"></image>
+				<view class="flex justify-center items-center text-gray-500 text-30">{{user.name}}
+					<template v-if="user.sex==2">
+						
+					</template>
+					<template v-else>
+						<view class="iconfont iconxingbie-nan tag-age"
+							:class="[user.sex == 1 ? 'iconxingbie-nan' :'iconxingbie-nv girl']">
+							<!-- <text class="ml-10">{{user.age}}</text> (user.sex == 0 ? 'iconxingbie-nv girl' : '')-->
+						</view>
+					</template>
+					
 				</view>
 			</view>
 			<!-- 关注 -->
-			<view class="flex flex-row justify-center items-center bg-gray-100 rounded-10 px-10 py-5 text-28">
+			<!-- <view class="flex flex-row justify-center items-center bg-gray-100 rounded-10 px-10 py-5 text-28">
 				<template v-if="info.isFollow">
 					<text @click="follow(false)">
 						已关注
@@ -26,7 +32,12 @@
 						<text class="iconfont iconjia mr-10 text-24"></text>关注
 					</view>
 				</template>
+			</view> -->
+			<!--标签盒子-->
+			<view class="flex flex-row justify-center items-center bg-gray-100 rounded-10 px-10 py-5 text-28">
+				{{info.labels}}
 			</view>
+			
 		</view>
 		<!-- 标题 -->
 		<view class="w-100 line-2 text-32 my-20" @click="goDetail()">{{info.title}}</view>
@@ -51,16 +62,7 @@
 		</slot>
 		<!-- 点赞、评论 -->
 		<view class="flex flex-row justify-between items-center text-gray-500 my-10">
-			<view class="flex flex-row justify-center items-center">
-				<view class="flex flex-row justify-center items-center mr-20" @click.stop="handleMark('smile')">
-					<view class="iconfont icondianzan mr-10 text-36" ></view>
-					{{info.likes}}
-				</view>
-				<!-- <view class="flex flex-row justify-center items-center" @click.stop="handleMark('cry')">
-					<view class="iconfont mr-10 text-36" :class="[handleIcon('cry',info.infoNum)]"></view>
-					{{info.infoNum.cryNum}}
-				</view> -->
-			</view>
+			
 			<view class="flex flex-row justify-center items-center">
 				<view class="flex flex-row justify-center items-center mr-20" @click="handleComment()">
 					<view class="iconfont iconliaotian mr-10 text-36"></view>
@@ -70,6 +72,16 @@
 					<view class="iconfont iconshoucang mr-10 text-36"></view>
 					{{info.collection}}
 				</view>
+			</view>
+			<view class="flex flex-row justify-center items-center">
+				<view class="flex flex-row justify-center items-center mr-20" @click.stop="handleMark('smile')">
+					<view class="iconfont icondianzan mr-10 text-36" ></view>
+					{{info.likes}}
+				</view>
+				<!-- <view class="flex flex-row justify-center items-center" @click.stop="handleMark('cry')">
+					<view class="iconfont mr-10 text-36" :class="[handleIcon('cry',info.infoNum)]"></view>
+					{{info.infoNum.cryNum}}
+				</view> -->
 			</view>
 		</view>
 	</view>
@@ -100,32 +112,46 @@
 			return {
 				info: null,
 				user:{},
+				author:{},
 			}
 		},
 		watch: {
 			item: {
 				handler(val) {
 					this.info = val
+					if(this.info){
+						this.$u.get('/api/user/'+this.info.authorId).then(res=>{
+							//console.log("author:",res)
+							this.user=res.data
+						}).catch(err=>{
+							console.log(err)
+						})
+					}
 				},
 				immediate: true
 			}
 		},
-		onLoad(){
-			if(this.info){
-				this.$u.get('/api/user/'+this.info.id).then(res=>{
-					console.log(res)
-					this.user=res.data
-				}).catch(err=>{
-					console.log(err)
-				})
-			}
-		},
+		// onLoad(){
+		// 	if(this.info){
+		// 		this.$u.get('/api/user/'+this.info.authorId).then(res=>{
+		// 			console.log("author:",res)
+		// 			this.user=res.data
+		// 		}).catch(err=>{
+		// 			console.log(err)
+		// 		})
+		// 	}
+		// },
 		methods: {
 			// 关注
 			follow(value) {
 				this.$emit('follow', {
 					value,
 					index: this.index
+				})
+			},
+			gotoauthor(id) {
+				uni.navigateTo({
+					url: `/pages/article/author?id=${id}`
 				})
 			},
 			// 表情处理

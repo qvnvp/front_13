@@ -7,7 +7,7 @@
             </u-form-item> -->
 			
 			<u-form-item label="昵称" prop="nickname" >
-			    <u-input v-model="user.nickname" placeholder="请输入昵称"/>
+			    <u-input v-model="user.name" placeholder="请输入昵称"/>
 			</u-form-item>
 			<u-form-item label="学院" prop="college" >
 			    <u-input v-model="user.college" placeholder="请输入所在学院"/>
@@ -86,12 +86,13 @@
 				leixing:'普通用户',
                 isAgreement: false,
 				user:{
-					accounts:'',
+					name: null,
+					sex:'',
 					age:'',
 					password:'',
 					confirmPassword:'',
 					type:0,
-					hobbies:''
+					hobbies:null
 				},
 				
             };
@@ -101,11 +102,13 @@
 		},
         methods: {
 			selectSex() {
-				const arr = ['男', '女', '保密']
+				const arr = [ '女','男', '保密']
 				uni.showActionSheet({
 					itemList: arr,
 					success: (res) => {
-						this.sex = arr[res.tapIndex]
+						console.log(res)
+						this.sex=arr[res.tapIndex]
+						this.user.sex = res.tapIndex
 					},
 					fail: function(res) {
 						console.log(res.errMsg);
@@ -114,10 +117,10 @@
 			},
 			//更新个人信息的方法
 			submit:function(){
-				this.user.hobbies = this.user.hobbies.join(',')
+				this.user.hobbies = this.user.hobbies==null ? null : this.user.hobbies.join(',')
 				this.$refs.validateFormRef.validate(valid=>{
 					if(valid){
-						console.log(this.user.hobbies)
+						console.log("用户爱好：",this.user.hobbies)
 						uni.request({
 						url:'/api/user',
 						method:'PUT',
@@ -133,10 +136,10 @@
 									duration: 2000
 								}) 
 								setTimeout(()=>{
-									uni.navigateTo({
+									uni.reLaunch({
 										url:'/pages/person/person'
 									});
-								},2000); //延迟2秒后跳转
+								},1000); //延迟2秒后跳转
 							}
 							else{
 								uni.showToast({

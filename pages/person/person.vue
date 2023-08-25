@@ -21,8 +21,8 @@
 		<!--登录之前显示的内容-->
 		<view v-else>
 			<view class="u-flex-col u-p-30 u-col-center">
-					<u-image width='150rpx' height='150rpx' :src="headImg" shape="circle"></u-image>
-					<text class="u-p-t-10 change">未登录</text>
+					<u-image width='150rpx' height='150rpx' src="@/static/logo.jpg" shape="circle"></u-image>
+					<text class="u-p-t-10 change" style="margin-top: 20rpx;">未登录</text>
 			</view>
 			<u-button class="button" shape="square"  @click="toLogin()">登录</u-button>
 		</view>
@@ -49,11 +49,7 @@
 					    fontSize: 28,
 					}
 				],
-				user:{
-					avatar:'',//头像
-					name:'',
-					snumber:''
-				},
+				user:{},
 				
 
 			}
@@ -69,7 +65,7 @@
 					method:'GET',
 					timeout:5000,
 					success: (res) => {
-						console.log("res:",res)
+						console.log("调取登录用户数据:",res)
 						if(res.data.code=='200'){
 							this.user=res.data.data;
 						}
@@ -81,9 +77,6 @@
 			}
 			
 			//let user=getStora
-			
-		},
-		onLoad() {
 			
 		},
 		methods: {

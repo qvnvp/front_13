@@ -1,7 +1,7 @@
 <template>
     <view class="wrap">
-        <view class="top"></view>
         <view class="content">
+			<u-image class="image" style="padding:10rpx 200rpx;"  mode="widthFix" src="@/static/logo.jpg"></u-image>
             <view class="title u-text-center">欢迎登录</view>
             <u-form ref="validateFormRef" :model="user">
                 <u-form-item label="账号" prop="snumber" :border-bottom="false">
@@ -11,11 +11,12 @@
                     <u-input type="password" class="u-border-bottom" v-model="user.password" placeholder="请输入密码"/>
                 </u-form-item>
             </u-form>
-            <button :style="[inputStyle]" class="loginBtn" @click="login()">登录</button>
+            <button :style="" class="loginBtn" @click="login()">登录</button>
             <view class="alternative">
                 <!-- <view class="password" @click="toRegister('/pages/users/register/register')">注册</view> -->
-                <view class="issue" @click="navigateTo(`/pages/main/login/forget-password/index`)">忘记密码</view>
+                <view class="issue" @click="toFindPwd()">忘记密码</view>
             </view>
+			
         </view>
     </view>
 </template>
@@ -31,7 +32,7 @@
                     password: ''//user对象的属性
                 },
                 rules: {
-                    accounts: [
+                    snumber: [
 						//required表示是否必须填写，message表示提示的信息 trigger->触发验证的事件 blur->失去焦点 focus:获得焦点
                         {required: true, message: '请输入账号!', trigger: 'blur'},
                         
@@ -53,11 +54,11 @@
 		},
         
         methods: {
-			// toRegister:function(){
-			// 	uni.navigateTo({
-			// 		url:'/pages/user/register/register'
-			// 	})
-			// },
+			toFindPwd:function(){
+				uni.navigateTo({
+					url:'/pages/user/login/findPwd/findPwd'
+				})
+			},
 			//登录的方法
 			login:function(){
 				//1.验证表单是否都通过了验证
@@ -102,4 +103,5 @@
 
 <style lang="scss" scoped>
     @import "./index.scss";
+	
 </style>

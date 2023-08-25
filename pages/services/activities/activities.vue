@@ -16,7 +16,7 @@
       </view>
       <view class="detail1">
         <view class="detail_name1">
-         相声社
+         哥乐相声社
         </view>
         <view class="detail_publicize1">
         热爱相声你就来
@@ -101,7 +101,7 @@ export default {
   },
   methods: {
            toDetail:function() {
-	         uni.redirectTo({
+	         uni.navigateTo({
 	         	url:'/pages/services/music/music'
 	         })
             }

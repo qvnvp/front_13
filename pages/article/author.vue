@@ -5,12 +5,12 @@
 		<view class="top_container" style="height: 280px; position: relative;">
 			<image src="../../static/img/back.png" style="position: fixed; top:10px; left: 10px; height: 35px; width: 35px; z-index: 999;" @click="goback"></image>
 			<view>
-				<image src="../../static/logo.png" style="height: 270px; width: 100%; filter: blur(6px)"></image>
+				<img :src="this.authorAvatar" style="height: 270px; width: 100%; filter: blur(6px);"></img>
 			</view>
 			<view style="position: absolute; bottom: 0; height: 80px; width: 100%; background-color: #fff;">
 				<view style="position: absolute; top: -30px; right: 20px; display: flex; flex-direction: row;">
-					<view style="margin: 40px 10px; font-size: 14px; font-weight: bold;">ikun</view>
-					<image src="../../static/logo.png" style="height: 60px; width: 60px;"></image>
+					<view style="margin: 40px 10px; font-size: 14px; font-weight: bold;">{{this.authorName}}</view>
+					<img :src="this.authorAvatar" style="height: 60px; width: 60px;"></img>
 				</view>
 			</view>
 		</view>
@@ -22,6 +22,7 @@
 				<view style="font-size: 40px;">{{getDateDay(item.createdTime)}}</view>
 				<view style="font-size: 24px; padding-top: 16px;">{{getDateMonth(item.createdTime)}}</view>
 			</view>
+			<!-- to do -->
 			<!-- <view class="content"
 				style="margin-top: 5px; margin-left: 10px; width: 89px; height: 89px; display: grid; grid-template-columns: repeat(2, 1fr);grid-template-rows: repeat(2, 1fr);grid-gap: 1px;">
 				<view style="height: 40px; width: 40px; border: 1px solid red;"></view>
@@ -29,6 +30,9 @@
 				<view style="height: 40px; width: 40px; border: 1px solid red;"></view>
 				<view style="height: 40px; width: 40px; border: 1px solid red;"></view>
 			</view> -->
+			<view style="margin-top: 5px; margin-left: 10px; width: 89px; height: 89px;" v-if="item.images != null">
+				<image :src="item.images" style="width: 100%; height: 100%;"></image>
+			</view>
 			<view style="font-size: 15px; font-weight: 500; padding-top: 10px; padding-left: 6px;">
 				{{item.title}}
 			</view>
@@ -79,6 +83,8 @@
 		},
 		onLoad(options) {
 			this.authorId = options.id;
+			this.authorName = options.authorName;
+			this.authorAvatar = options.authorAvatar;
 			uni.request({
 				url: `/api/article/author/${this.authorId}`,
 				data: '',
@@ -92,7 +98,7 @@
 					console.log(err)
 				}
 			})
-		},
+		}
 	}
 </script>
 

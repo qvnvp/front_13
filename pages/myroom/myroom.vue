@@ -21,12 +21,12 @@
 						<text class="margin-left-xs">{{this.gender}}</text>
 					</view>
 				</view>
-		
+
 				<!-- 发布人 -->
 				<!-- style="border:1rpx solid red" -->
 				<view class="user-info-wrap">
-					<view class="card-box2 user-info margin-top-sm align-center" v-for="(item,index) in list" :item="item"
-						:index="index" :key="index">
+					<view class="card-box2 user-info margin-top-sm align-center" v-for="(item,index) in list"
+						:item="item" :index="index" :key="index">
 						<view class="tip-title">
 							<text>{{item.name}}</text>
 						</view>
@@ -76,32 +76,8 @@
 				dormitoryno: '',
 				count: null,
 				sex: null,
-				gender:'',
-				list: [{
-						name: '蒋凡江',
-						phone: '12345678998',
-						qq: '1234567898',
-						content: '一般11点前入睡，中午会午休-爱整洁，学习时需要安静的环境-不吸烟-dsfsefdfefefewfwfwfwfewfwefewfdfsfwfefwfweffwwfwefewfwfwfwfewfewfwefwefewfwefwefewf',
-					},
-					{
-						name: '蒋凡江',
-						phone: '12345678998',
-						qq: '1234567898',
-						content: '一般11点前入睡，中午会午休-爱整洁，学习时需要安静的环境-不吸烟-dsfsefdf',
-					},
-					{
-						name: '蒋凡江',
-						phone: '12345678998',
-						qq: '1234567898',
-						content: '一般11点前入睡，中午会午休-爱整洁，学习时需要安静的环境-不吸烟-dsfsefdfefefewfwfwfwfewfwefewfdfsfwfefwfweffwwfwefewfwfwfwfewfewfwefwefewfwefwefewf',
-					},
-					{
-						name: '蒋凡江',
-						phone: '12345678998',
-						qq: '1234567898',
-						content: '一般11点前入睡，中午会午休-爱整洁，学习时需要安静的环境-不吸烟-dsfsefdfefefewfwfwfwfewfwefewfdfsfwfefwfweffwwfwefewfwfwfwfewfewfwefwefewfwefwefewf',
-					}
-				]
+				gender: '',
+				list: [],
 			}
 		},
 		// components: {
@@ -113,6 +89,7 @@
 					title: '退出成功',
 					type: 'default',
 					url: '/pages/room/room'
+					// back: true
 				})
 			},
 			quit: function() {
@@ -135,18 +112,19 @@
 		},
 		onLoad() { //option为object类型，会序列化上个页面传递的参数
 			// console.log("lastid:", option.dormitoryId)
-			this.$u.get('/api/v1/dormi_require/' + this.dormitoryId).then(res => { //请求成功执行的函数
-				if (res.code == 200) {
-					this.list = res.data
-				}
-			}).catch(err => { //请求失败执行的函数
-				console.log(err)
-			})
 
 			this.$u.get('/api/v1/dormi_require/checkedInInfo').then(res => { //请求成功执行的函数
 				if (res.code == 200) {
 					this.isShow = 1
 					this.dormitoryId = res.data.id
+					this.$u.get('/api/v1/dormi_require/' + this.dormitoryId).then(res => { //请求成功执行的函数
+						if (res.code == 200) {
+							this.list = res.data
+							console.log("myroom list:", this.list)
+						}
+					}).catch(err => { //请求失败执行的函数
+						console.log(err)
+					})
 					this.building = res.data.building
 					this.dormitoryno = res.data.dormitoryno
 					this.count = res.data.count
@@ -327,7 +305,7 @@
 		height: 100rpx;
 		line-height: 100rpx;
 		border-radius: 20rpx 20rpx 0 0;
-		background-color: #ffaa00;
+		background-color: #ff0000;
 	}
 
 	.bottom-text {

@@ -9,8 +9,8 @@
 				<view class="services_11">
 					<view class="services_26">
 						<view class="services_28">
-							<image v-on:click="services_29_29_click()"  src="/static/services/images/services_29_29.jpg" mode="scaleToFill" border="0"    class="services_29"></image>
-							<text decode="true" class="services_30">认证</text>
+							<image v-on:click="services_29_29_click()"  src="../../static/services/images/services_29_29.jpg" mode="scaleToFill" border="0"    class="services_29"></image>
+							<text decode="true" class="services_30">交创</text>
 						</view>
 						<view class="services_31">
 							<image v-on:click="services_32_32_click()"  src="/static/services/images//bus.png" mode="scaleToFill" border="0"    class="services_32"></image>
@@ -52,7 +52,7 @@
 					</view>
 					<view class="services_53">
 						<image v-on:click="services_54_54_click()"  src="/static/services/images/services_54_54.jpg" mode="scaleToFill" border="0"    class="services_54"></image>
-						<text decode="true" class="services_55">开学小贴士</text>
+						<text decode="true" class="services_55">心理咨询</text>
 					</view>
 				</view>
 				<view class="services_20">
