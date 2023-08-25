@@ -82,7 +82,9 @@ export default {
 				url: '/pages/services/chuangye/chuangye?url=' + encodeURIComponent(
 					'https://sxic.cqu.edu.cn/home')
 			})
+
 		},
+
 
 		/**
 		 * services_32_32处理函数

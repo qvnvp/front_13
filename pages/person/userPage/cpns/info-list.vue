@@ -17,7 +17,6 @@
 							<!-- <text class="ml-10">{{user.age}}</text> (user.sex == 0 ? 'iconxingbie-nv girl' : '')-->
 						</view>
 					</template>
-					
 				</view>
 			</view>
 			<!-- 关注 -->

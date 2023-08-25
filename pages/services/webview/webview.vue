@@ -12,9 +12,7 @@ export default {
     };
   },
   onLoad(options) {
-	 
     this.url = decodeURIComponent(options.url || '');
-	 console.log("url:",this.url)
   }
 };
 </script>
